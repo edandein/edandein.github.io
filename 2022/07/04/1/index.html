@@ -10,7 +10,12 @@
 
     <!--Description-->
     
-        <meta name="description" content="第一篇博客 以后的学习笔记以及总结都会发到这里">
+        <meta name="description" content="day 1  mysql数据库查看mysql自动生成密码
+1grep &amp;#x27;password&amp;#x27; /var/log/mysqld.log  
+
+修改mysql密码策略
+临时有效
+1234567修改策略为0set global validate_password_policy=0;修改密">
     
 
     <!--Author-->
@@ -20,7 +25,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="First"/>
+        <meta property="og:title" content="从mysql数据库开始学习sql注入"/>
     
 
     <!--Open Graph Description-->
@@ -51,7 +56,7 @@
 
     <!-- Title -->
     
-    <title>First - edandein’s Blog</title>
+    <title>从mysql数据库开始学习sql注入 - edandein’s Blog</title>
 
     <!-- Custom CSS -->
     
@@ -78,7 +83,7 @@
     <div class="w-100 tc db dt-ns">
         <!-- Title -->
         <div class="dib dtc-ns w-90-ns white">
-            <h1 class="f1-ns tc tc-ns tl-ns">First</h1>
+            <h1 class="f1-ns tc tc-ns tl-ns">从mysql数据库开始学习sql注入</h1>
         </div>
         <!-- Icon -->
         <div class="dib dtc-ns w-10-ns f1 f-5-ns f-6-l mb2">
@@ -97,7 +102,33 @@
                 <div class="fl w-100 mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
 
                     <!-- Main Post Content -->
-                    <h1 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h1><p> 以后的学习笔记以及总结都会发到这里</p>
+                    <h1 id="day-1-mysql数据库"><a href="#day-1-mysql数据库" class="headerlink" title="day 1  mysql数据库"></a>day 1  mysql数据库</h1><p>查看mysql自动生成密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &#x27;password&#x27; /var/log/mysqld.log  </span><br></pre></td></tr></table></figure>
+
+<p>修改mysql密码策略</p>
+<p>临时有效</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">修改策略为0</span><br><span class="line"></span><br><span class="line">set global validate_password_policy=0;</span><br><span class="line"></span><br><span class="line">修改密码长度</span><br><span class="line"></span><br><span class="line">set global validate_password_length=1;</span><br></pre></td></tr></table></figure>
+
+<p>永久生效</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/my.cnf</span><br><span class="line">[mysqld]</span><br><span class="line">validate_password_policy=0</span><br><span class="line">validate_password_length=1</span><br></pre></td></tr></table></figure>
+
+<p>mysql数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">#登录mysql</span><br><span class="line"></span><br><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line">#查看所有数据库</span><br><span class="line"></span><br><span class="line">show databases;</span><br><span class="line"></span><br><span class="line">#创建数据库 默认编码为 utf8</span><br><span class="line"></span><br><span class="line">create database % default charset=utf8;</span><br><span class="line"></span><br><span class="line">#进入数据库</span><br><span class="line"></span><br><span class="line">use %;</span><br><span class="line"></span><br><span class="line">#查看所在数据库</span><br><span class="line"></span><br><span class="line">select database();</span><br><span class="line"></span><br><span class="line">#创建数据表t1</span><br><span class="line"></span><br><span class="line">create table t1(id int,user char(5)) default charset=utf8;</span><br><span class="line"></span><br><span class="line">#查看表</span><br><span class="line"></span><br><span class="line">show tables;</span><br><span class="line"></span><br><span class="line">#查看表内字段</span><br><span class="line"></span><br><span class="line">desc 表名;</span><br><span class="line"></span><br><span class="line">#单条添加数据</span><br><span class="line"></span><br><span class="line">insert into t1 (id,user) values (1,&#x27;tom&#x27;),(2,&#x27;jerry&#x27;);</span><br><span class="line"></span><br><span class="line">#查询表内数据</span><br><span class="line">select * from t1;</span><br><span class="line"></span><br><span class="line">#修改uid=2的数据</span><br><span class="line">updata stu set uname=&#x27;max&#x27; where uid=2;</span><br><span class="line"></span><br><span class="line">#删除数据</span><br><span class="line">delete from 表名 where 条件;</span><br><span class="line"></span><br><span class="line">#删除指定表</span><br><span class="line">drop table 表名;</span><br><span class="line"></span><br><span class="line">#删除指定数据库</span><br><span class="line">drop database 库名;</span><br><span class="line"></span><br><span class="line">#数据类型</span><br><span class="line">#变长字符varchar()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#字段约束</span><br><span class="line"></span><br><span class="line">#无符号 unsigned  </span><br><span class="line">#字节宽度 int(4)</span><br><span class="line">#前导零填充 zerofill</span><br><span class="line">#主关键字 prinmary key </span><br><span class="line">#自增 auto_increment</span><br><span class="line">#默认值 default</span><br><span class="line">#多选一 enum</span><br><span class="line">#多选多 set</span><br><span class="line"></span><br><span class="line">#查询语句</span><br><span class="line">#条件查询where</span><br><span class="line">select *from t1;</span><br><span class="line">select  uname from t1;</span><br><span class="line">select concat(uname,age,sex) from t1;</span><br><span class="line">select *from stu where uid not in (1,2,18);</span><br><span class="line">select classid ,count(*)from stu group by classid;</span><br><span class="line">select classid,count(*) from stu group by classid having count(*)&gt;20;</span><br><span class="line"></span><br><span class="line">select *from t1 where uname like &#x27;谢%&#x27;;</span><br><span class="line">select *from t1 where uname like &#x27;%剑%&#x27;;</span><br><span class="line">select *from t1 where uname like &#x27;%__%&#x27;;</span><br><span class="line">select *from t1 where (age&gt;20 and age&lt;30) and sex=&#x27;女&#x27;;</span><br><span class="line"></span><br><span class="line">#子查询</span><br><span class="line">select * from stu where age=(select max(age)from stu);</span><br></pre></td></tr></table></figure>
+
+<h1 id="day-2-sql注入常用函数"><a href="#day-2-sql注入常用函数" class="headerlink" title="day 2  sql注入常用函数"></a>day 2  sql注入常用函数</h1><p>version () 数据库版本</p>
+<p>database() 数据库名</p>
+<p>user() 用户名</p>
+<p>current_user() 当前用户名</p>
+<p>system_user() 系统用户名</p>
+<p>@@datadir 数据库路径</p>
+<p>@@version_compile_os 操作系统</p>
+<p>@@version 数据库版本</p>
+<h1 id="day-3-sql语句写shell"><a href="#day-3-sql语句写shell" class="headerlink" title="day 3 sql语句写shell"></a>day 3 sql语句写shell</h1><p>数据库</p>
+<p>select 1,load_file(‘C:&#x2F;2.txt’)     #读取文件</p>
+<p>select ‘ ‘ into outfile ‘ ‘</p>
+<p>select ‘ ‘ into dumpfile ‘ ‘</p>
+<p>ceil( ) 向上取整</p>
+<p>floor( ) 向下取整</p>
 
 
                     
@@ -117,7 +148,7 @@
                 <span class="ec ec-mono pr2">💬</span><span class="mr2">Comment on</span>
             
             
-            <a class="mr3 ic ic-share ic-github" href="https://github.com/edandein/undefined/issues/new?labels=comment&amp;title=First&amp;body=%0A%0AUrl:%20http://example.com/2022/07/04/1/" target="_blank" rel="noopener noreferrer">
+            <a class="mr3 ic ic-share ic-github" href="https://github.com/edandein/undefined/issues/new?labels=comment&amp;title=%E4%BB%8Emysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0sql%E6%B3%A8%E5%85%A5&amp;body=%0A%0AUrl:%20http://example.com/2022/07/04/1/" target="_blank" rel="noopener noreferrer">
                 github
             </a>
         
