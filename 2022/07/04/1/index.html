@@ -1,108 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<!-- Head tag -->
-<head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!DOCTYPE html>
+  <html lang="en">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="description" content= >
+  <meta name="keywords" content= >
 
-    <!--Description-->
+  <head>
+    <title>
+      从mysql数据库开始学习sql注入 [ EdandEin’s World ]
+    </title>
+  <meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body>
+
+    <link rel="stylesheet" href="/css/header.css">
+<div class="header">
+  <div class="logo">
+    <span class="pull-left">
+      <a id="site-name" href="/">
+        
+      </a>
+    </span>
+  </div>
+  <ul class="nav-list">
     
-        <meta name="description" content="day 1  mysql数据库查看mysql自动生成密码
-1grep &amp;#x27;password&amp;#x27; /var/log/mysqld.log  
+      <li>
+        <a href="/">
+          首页
+        </a>
+      </li>
+      
+      <li>
+        <a href="/about">
+          关于
+        </a>
+      </li>
+      
+  </ul>
+</div>
 
-修改mysql密码策略
-临时有效
-1234567修改策略为0set global validate_password_policy=0;修改密">
+      <!--<link rel="stylesheet" href="/css/top-header.css">
+<div id="top-bar" class="fixed">
+
+  <a class="goto-top" href="#"></a>
+  <ul class="bar-list bar-list-1">
     
+      <li>
+        <p>
+          <a href="/">
+            <text class="bar-text bar-p1">
+              首页
+            </text>
+            <text class="bar-text bar-p2"></text>
+          </a>
+          <text class="bar-p3">/</text>
+        </p>
+      </li>
+      
+      <li>
+        <p>
+          <a href="/about">
+            <text class="bar-text bar-p1">
+              关于
+            </text>
+            <text class="bar-text bar-p2"></text>
+          </a>
+          <text class="bar-p3">/</text>
+        </p>
+      </li>
+      
+  </ul>
+</div>-->
 
-    <!--Author-->
-    
-        <meta name="author" content="ed">
-    
-
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="从mysql数据库开始学习sql注入"/>
-    
-
-    <!--Open Graph Description-->
-    
-
-    <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="edandein’s Blog"/>
-
-    <!--Type page-->
-    
-        <meta property="og:type" content="article" />
-    
-
-    <!--Page Cover for sharing-->
-    
-        <meta property="og:image" content="https://i❤️.ws/emoji-image/💀.png" />
-    
-
-    <!-- Page permalink -->
-    
-        <meta property="og:url" content="http://example.com/2022/07/04/1/" />
-    
-
-    <meta name="twitter:card" content="summary" />
-    
-
-    <meta name="generator" content="Hexo" />
-
-    <!-- Title -->
-    
-    <title>从mysql数据库开始学习sql注入 - edandein’s Blog</title>
-
-    <!-- Custom CSS -->
-    
-<link rel="stylesheet" href="/css/style.css">
-
-
-</head>
-
-
-<body class="sans-serif">
-
-<!-- Main Content -->
-<!-- Banner -->
-<!-- Banner -->
-<header class="w-100 bg-1 ph5-ns ph3 text-light">
-
-    <nav class="db w-100 mw8 center border-box pv3">
-        <div class="db v-mid w-100 tc tr-ns">
-            
-            
-        </div>
-    </nav>
-
-    <div class="w-100 tc db dt-ns">
-        <!-- Title -->
-        <div class="dib dtc-ns w-90-ns white">
-            <h1 class="f1-ns tc tc-ns tl-ns">从mysql数据库开始学习sql注入</h1>
-        </div>
-        <!-- Icon -->
-        <div class="dib dtc-ns w-10-ns f1 f-5-ns f-6-l mb2">
-            <span class="ec">☠</span>
-        </div>
-    </div>
-    
-</header>
-
-
-<!-- Content -->
-<div class="w-100 ph2 ph4-m ph5-l mv5">
-    <div class="content">
-        <div class="mw8 center">
-            <div class="cf">
-                <div class="fl w-100 mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
-
-                    <!-- Main Post Content -->
-                    <h1 id="day-1-mysql数据库"><a href="#day-1-mysql数据库" class="headerlink" title="day 1  mysql数据库"></a>day 1  mysql数据库</h1><p>查看mysql自动生成密码</p>
+        <div id="content-outer">
+          <div class="content-inner">
+            <link rel="stylesheet" href="/css/post.css">
+<div class="posts">
+  <a href="/index.html"><i class="fa fa-home
+replay-btn" aria-hidden="true"></i></a>
+  <div class="post-title">
+    <p>
+      从mysql数据库开始学习sql注入
+    </p>
+    <hr>
+  </div>
+  <div class="post-content">
+    <h1 id="day-1-mysql数据库"><a href="#day-1-mysql数据库" class="headerlink" title="day 1  mysql数据库"></a>day 1  mysql数据库</h1><p>查看mysql自动生成密码</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &#x27;password&#x27; /var/log/mysqld.log  </span><br></pre></td></tr></table></figure>
 
 <p>修改mysql密码策略</p>
@@ -130,53 +117,31 @@
 <p>ceil( ) 向上取整</p>
 <p>floor( ) 向下取整</p>
 
-
-                    
-                        <div class="pt3">
-                            <span class="ec pr2">🕗</span>2022-07-04
-                        </div>
-                    
-                    <!-- Tags Bottom -->
-                    
-
-                    <!-- Comments -->
-                    
-    <div class="pt3 comment">
-    
-        
-            
-                <span class="ec ec-mono pr2">💬</span><span class="mr2">Comment on</span>
-            
-            
-            <a class="mr3 ic ic-share ic-github" href="https://github.com/edandein/undefined/issues/new?labels=comment&amp;title=%E4%BB%8Emysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0sql%E6%B3%A8%E5%85%A5&amp;body=%0A%0AUrl:%20http://example.com/2022/07/04/1/" target="_blank" rel="noopener noreferrer">
-                github
-            </a>
-        
-        
-    
-    </div>
-
-
-                </div>
-            </div>
+  </div>
+  
+</div>
+          </div>
         </div>
-    </div>
+
+        <link rel="stylesheet" href="/css/footer.css">
+<div class="bottom-outer">
+  <div class="copyright">©2021 - 2021 By Tanger</div>
+  <div class="framework-info">
+    <span>Power by</span>
+    <a class="a1" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    <span class="footer-separator">|</span>
+    <span>Theme by</span>
+    <a class="a2" target="_blank" rel="noopener" href="https://github.com/redhat123456/hexo-theme-MiHoYo">MiHoYo</a>
+  </div>
 </div>
 
+          
+            <!-- scripts list from theme config.yml -->
+            
+              <script src="/js/MiHoYo.js"></script>
+              
+                
 
-<!-- Footer -->
-<footer class="bg-1 ph2 ph5-ns pv5 center tc">
-    
-        <a class="dib m3 glow o-70 link black ma2"
-            href="https://github.com/edandein/"
-            target="_blank" rel="noopener noreferrer">
-            <i class="ic ic-github"></i>
-            <span class="db mt2">GitHub</span>
-        </a>
-    
-</footer>
+  </body>
 
-
-</body>
-
-</html>
+  </html>
