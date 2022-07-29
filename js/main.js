@@ -1,1 +1,39 @@
-$(document).ready(function(){$(window).scroll(function(){var scrollt=document.documentElement.scrollTop+document.body.scrollTop;if(scrollt>200){$("#gotop").fadeIn(400);if($(window).width()>=1200){$(".navbar").stop().fadeTo(400,0.2);}}else{$("#gotop").fadeOut(400);if($(window).width()>=1200){$(".navbar").stop().fadeTo(400,1);}}});$("#gotop").click(function(){$("html,body").animate({scrollTop:"0px"},200);});$(".navbar").mouseenter(function(){$(".navbar").fadeTo(100,1);});$(".navbar").mouseleave(function(){var scrollt=document.documentElement.scrollTop+document.body.scrollTop;if(scrollt>200){$(".navbar").fadeTo(100,0.2);}});replaceMeta();$(window).resize(function(){replaceMeta();});});replaceMeta=function(){if($(window).width()<980){if($("#side_meta #post_meta").length>0){$("#post_meta").appendTo("#top_meta");}if($("#sidebar #site_search").length>0){$("#site_search").appendTo("#top_search");$("#site_search #st-search-input").css("width","95%");}}else{if($("#top_meta #post_meta").length>0){$("#post_meta").appendTo("#side_meta");}if($("#top_search #site_search").length>0){$("#site_search").prependTo("#sidebar");$("#site_search #st-search-input").css("width","85%");}}};
+(() => {
+  // Theme switch
+  const body = document.body;
+  const lamp = document.getElementById("mode");
+
+  let elem = document.querySelectorAll('figure.highlight')
+  elem.forEach(function(item){
+    let langName = item.getAttribute('class').split(' ')[1]
+    if (langName === 'plain' || langName === undefined) langName = 'Code'
+    item.setAttribute('data-lang',langName);
+  })
+
+  const toggleTheme = (state) => {
+    if (state === "dark") {
+      localStorage.setItem("theme", "light");
+      body.removeAttribute("data-theme");
+    } else if (state === "light") {
+      localStorage.setItem("theme", "dark");
+      body.setAttribute("data-theme", "dark");
+    } else {
+      initTheme(state);
+    }
+  };
+
+  lamp.addEventListener("click", () =>
+    toggleTheme(localStorage.getItem("theme"))
+  );
+
+  // Blur the content when the menu is open
+  const cbox = document.getElementById("menu-trigger");
+
+  cbox.addEventListener("change", function () {
+    const area = document.querySelector(".wrapper");
+    this.checked
+      ? area.classList.add("blurry")
+      : area.classList.remove("blurry");
+  });
+})();
+
