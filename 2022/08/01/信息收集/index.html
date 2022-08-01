@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="ed" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+     EdandEin&#39;s World
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/color-scheme.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+<link rel="stylesheet" href="/css/comments.css">
+
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Ed</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          <a href="/friends/">Friends</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title"></div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2022-08-01 10:14:57
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h2 id="1-信息收集概要"><a href="#1-信息收集概要" class="headerlink" title="1.信息收集概要"></a>1.信息收集概要</h2><h3 id="1-whois收集网站管理信息例如邮箱"><a href="#1-whois收集网站管理信息例如邮箱" class="headerlink" title="1.whois收集网站管理信息例如邮箱"></a>1.whois收集网站管理信息例如邮箱</h3><h3 id="2-查看网站是否有CDN"><a href="#2-查看网站是否有CDN" class="headerlink" title="2.查看网站是否有CDN"></a>2.查看网站是否有CDN</h3><h3 id="3-查看网站cms（指纹）"><a href="#3-查看网站cms（指纹）" class="headerlink" title="3.查看网站cms（指纹）"></a>3.查看网站cms（指纹）</h3><h3 id="4-网站旁段、c段"><a href="#4-网站旁段、c段" class="headerlink" title="4.网站旁段、c段"></a>4.网站旁段、c段</h3><h1 id="CDN绕过"><a href="#CDN绕过" class="headerlink" title="CDN绕过"></a>CDN绕过</h1><h2 id="1-判断网站是否存在CDN"><a href="#1-判断网站是否存在CDN" class="headerlink" title="1.判断网站是否存在CDN"></a>1.判断网站是否存在CDN</h2><h3 id="1-全球ping"><a href="#1-全球ping" class="headerlink" title="1.全球ping"></a>1.全球ping</h3><h3 id="2-cdm命令行指令：nslookup"><a href="#2-cdm命令行指令：nslookup" class="headerlink" title="2.cdm命令行指令：nslookup"></a>2.cdm命令行指令：nslookup</h3><h2 id="2-CDN的绕过方法"><a href="#2-CDN的绕过方法" class="headerlink" title="2.CDN的绕过方法"></a>2.CDN的绕过方法</h2><h3 id="x3D-x3D-1-x3D-x3D-邮件查询。可以通过对方发送的邮件查看对方真实ip"><a href="#x3D-x3D-1-x3D-x3D-邮件查询。可以通过对方发送的邮件查看对方真实ip" class="headerlink" title="&#x3D;&#x3D;1.&#x3D;&#x3D;邮件查询。可以通过对方发送的邮件查看对方真实ip"></a>&#x3D;&#x3D;1.&#x3D;&#x3D;邮件查询。可以通过对方发送的邮件查看对方真实ip</h3><h3 id="x3D-x3D-2-x3D-x3D-使用国外ip-ping目标网址"><a href="#x3D-x3D-2-x3D-x3D-使用国外ip-ping目标网址" class="headerlink" title="&#x3D;&#x3D;2.&#x3D;&#x3D;使用国外ip ping目标网址"></a>&#x3D;&#x3D;2.&#x3D;&#x3D;使用国外ip ping目标网址</h3><h3 id="3-子域名一般没有CDN。通过子域名查询可查询真实ip"><a href="#3-子域名一般没有CDN。通过子域名查询可查询真实ip" class="headerlink" title="3.子域名一般没有CDN。通过子域名查询可查询真实ip"></a>3.子域名一般没有CDN。通过子域名查询可查询真实ip</h3><h3 id="4-DNS历史解析。目标网站在创建时可能未使用CDN（微步在线）"><a href="#4-DNS历史解析。目标网站在创建时可能未使用CDN（微步在线）" class="headerlink" title="4.DNS历史解析。目标网站在创建时可能未使用CDN（微步在线）"></a>4.DNS历史解析。目标网站在创建时可能未使用CDN（微步在线）</h3><h3 id="5-暗黑引擎搜索（html源代码标签）"><a href="#5-暗黑引擎搜索（html源代码标签）" class="headerlink" title="5.暗黑引擎搜索（html源代码标签）"></a>5.暗黑引擎搜索（html源代码标签）</h3><h3 id="6-敏感文件查找。敏感文件可能会记录目标网站的真实ip地址或绝对路径，通过查找目标网站相关的敏感文件（-x3D-x3D-探针、phpinfo-php-x3D-x3D-）可获取真实ip地址"><a href="#6-敏感文件查找。敏感文件可能会记录目标网站的真实ip地址或绝对路径，通过查找目标网站相关的敏感文件（-x3D-x3D-探针、phpinfo-php-x3D-x3D-）可获取真实ip地址" class="headerlink" title="6.敏感文件查找。敏感文件可能会记录目标网站的真实ip地址或绝对路径，通过查找目标网站相关的敏感文件（&#x3D;&#x3D;探针、phpinfo.php&#x3D;&#x3D;）可获取真实ip地址"></a>6.敏感文件查找。敏感文件可能会记录目标网站的真实ip地址或绝对路径，通过查找目标网站相关的敏感文件（&#x3D;&#x3D;探针、phpinfo.php&#x3D;&#x3D;）可获取真实ip地址</h3><h3 id="7-全网扫描（-x3D-x3D-工具-x3D-x3D-）"><a href="#7-全网扫描（-x3D-x3D-工具-x3D-x3D-）" class="headerlink" title="7.全网扫描（&#x3D;&#x3D;工具&#x3D;&#x3D;）"></a>7.全网扫描（&#x3D;&#x3D;工具&#x3D;&#x3D;）</h3><p><a target="_blank" rel="noopener" href="https://anonymousemail.me/">https://anonymousemail.me</a> 匿名邮箱</p>
+<p><a target="_blank" rel="noopener" href="https://x.threatbook.cn/">https://x.threatbook.cn</a> 微步在线</p>
+<p><a target="_blank" rel="noopener" href="http://www.fofa.info/">www.fofa.info</a> 暗黑引擎</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Tai7sy/fuckcdn">https://github.com/Tai7sy/fuckcdn</a> 全网扫描工具（易语言）</p>
+<p><a target="_blank" rel="noopener" href="https://www.lanzous.com/iao7mh">https://www.lanzous.com/iao7mh</a>  全网扫描工具（python2）</p>
+<p>奇安信鹰途</p>
+<p>shandan</p>
+<p>钟馗之眼</p>
+<h1 id="app信息"><a href="#app信息" class="headerlink" title="app信息"></a>app信息</h1><h2 id="waf识别工具"><a href="#waf识别工具" class="headerlink" title="waf识别工具"></a>waf识别工具</h2><p><a target="_blank" rel="noopener" href="https://github.com/EnableSecurity/wafw00f">https://github.com/EnableSecurity/wafw00f</a></p>
+<h2 id="app服务端漏洞"><a href="#app服务端漏洞" class="headerlink" title="app服务端漏洞"></a>app服务端漏洞</h2><h3 id="1-反编译"><a href="#1-反编译" class="headerlink" title="1.反编译"></a>1.反编译</h3><p>dex2jar、Androidkiller</p>
+<h3 id="2-抓包"><a href="#2-抓包" class="headerlink" title="2.抓包"></a>2.抓包</h3><h1 id="信息收集重点"><a href="#信息收集重点" class="headerlink" title="信息收集重点"></a>信息收集重点</h1><p><a target="_blank" rel="noopener" href="https://www.tianyacha.com/">https://www.tianyacha.com</a> 天眼查</p>
+<p><a target="_blank" rel="noopener" href="https://www.qichacha.com/">https://www.qichacha.com</a> 企查查</p>
+<p><a target="_blank" rel="noopener" href="https://www.reg007.com/">https://www.reg007.com</a> 注册过的网站查询</p>
+<p><a target="_blank" rel="noopener" href="https://www.email-format.com/i/search">https://www.email-format.com/i/search</a> 在线邮箱查询</p>
+<p><a target="_blank" rel="noopener" href="https://www.aies.cn/pinyin.htm">https://www.aies.cn/pinyin.htm</a> 在线汉字转拼音（制作字典）</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/shack2/SNETracke/releases">https://github.com/shack2/SNETracke/releases</a> 超级弱口令工具</p>
+<p><a target="_blank" rel="noopener" href="https://anymousemail.me/">https://anymousemail.me</a> 匿名邮箱</p>
+<p>Maltego 网站资产结构、员工手机号、邮箱</p>
+<p>招聘网</p>
+<p>支付宝根据QQ邮箱查姓名</p>
+<p>js信息收集 相关脚本：<a target="_blank" rel="noopener" href="https://github.com/Threezhl/JSFinder">https://github.com/Threezhl/JSFinder</a>  爬取网站js文件，提取url、子域名</p>
+<h1 id="nmap的使用"><a href="#nmap的使用" class="headerlink" title="nmap的使用"></a>nmap的使用</h1><h2 id="了解常见端口号及其对应端口服务"><a href="#了解常见端口号及其对应端口服务" class="headerlink" title="了解常见端口号及其对应端口服务"></a>了解常见端口号及其对应端口服务</h2><h2 id="nmap用途"><a href="#nmap用途" class="headerlink" title="nmap用途"></a>nmap用途</h2><p>发现网络上的主机；端口扫描；os检测；软件脚本检测脆弱性的漏洞</p>
+<h2 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h2><p>-sP：进行ping扫描，扫描网段存活机器</p>
+<p>&#x3D;&#x3D;-sS&#x3D;&#x3D;： syn扫描也叫半开放扫描，不会产生会话，对方难以发现 </p>
+<p> -sT： 三次握手扫描，容易被发现，基本不用</p>
+<p>-sV： 扫描目标端口开放的服务版本</p>
+<p>-O： 识别目标操作系统版本</p>
+<p>-A： os识别，版本探测，附带脚本和综合扫描</p>
+<p>&#x3D;&#x3D;-Pn -A&#x3D;&#x3D;： 绕过防火墙进行全面扫描 </p>
+<p>-T(1-6)：扫描线程，数字越大越快</p>
+<h2 id="常用脚本"><a href="#常用脚本" class="headerlink" title="常用脚本"></a>常用脚本</h2><p>auth：处理鉴权证书（绕开鉴权）检测弱口令</p>
+<p>brute：暴力破解</p>
+<p>vuln：检测是否存在常见漏洞</p>
+<p>脚本使用：-script&#x3D;&#x3D;&#x3D;脚本名&#x3D;&#x3D;</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2022/07/06/%E6%89%93%E7%8B%97%E6%A3%8D%E6%B3%95/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2022-08-01 10:14:57
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-text">信息收集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E6%A6%82%E8%A6%81"><span class="toc-text">1.信息收集概要</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-whois%E6%94%B6%E9%9B%86%E7%BD%91%E7%AB%99%E7%AE%A1%E7%90%86%E4%BF%A1%E6%81%AF%E4%BE%8B%E5%A6%82%E9%82%AE%E7%AE%B1"><span class="toc-text">1.whois收集网站管理信息例如邮箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%AB%99%E6%98%AF%E5%90%A6%E6%9C%89CDN"><span class="toc-text">2.查看网站是否有CDN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%AB%99cms%EF%BC%88%E6%8C%87%E7%BA%B9%EF%BC%89"><span class="toc-text">3.查看网站cms（指纹）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%BD%91%E7%AB%99%E6%97%81%E6%AE%B5%E3%80%81c%E6%AE%B5"><span class="toc-text">4.网站旁段、c段</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CDN%E7%BB%95%E8%BF%87"><span class="toc-text">CDN绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%88%A4%E6%96%AD%E7%BD%91%E7%AB%99%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8CDN"><span class="toc-text">1.判断网站是否存在CDN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%A8%E7%90%83ping"><span class="toc-text">1.全球ping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-cdm%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%8C%87%E4%BB%A4%EF%BC%9Anslookup"><span class="toc-text">2.cdm命令行指令：nslookup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CDN%E7%9A%84%E7%BB%95%E8%BF%87%E6%96%B9%E6%B3%95"><span class="toc-text">2.CDN的绕过方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#x3D-x3D-1-x3D-x3D-%E9%82%AE%E4%BB%B6%E6%9F%A5%E8%AF%A2%E3%80%82%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E5%AF%B9%E6%96%B9%E5%8F%91%E9%80%81%E7%9A%84%E9%82%AE%E4%BB%B6%E6%9F%A5%E7%9C%8B%E5%AF%B9%E6%96%B9%E7%9C%9F%E5%AE%9Eip"><span class="toc-text">&#x3D;&#x3D;1.&#x3D;&#x3D;邮件查询。可以通过对方发送的邮件查看对方真实ip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x3D-x3D-2-x3D-x3D-%E4%BD%BF%E7%94%A8%E5%9B%BD%E5%A4%96ip-ping%E7%9B%AE%E6%A0%87%E7%BD%91%E5%9D%80"><span class="toc-text">&#x3D;&#x3D;2.&#x3D;&#x3D;使用国外ip ping目标网址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AD%90%E5%9F%9F%E5%90%8D%E4%B8%80%E8%88%AC%E6%B2%A1%E6%9C%89CDN%E3%80%82%E9%80%9A%E8%BF%87%E5%AD%90%E5%9F%9F%E5%90%8D%E6%9F%A5%E8%AF%A2%E5%8F%AF%E6%9F%A5%E8%AF%A2%E7%9C%9F%E5%AE%9Eip"><span class="toc-text">3.子域名一般没有CDN。通过子域名查询可查询真实ip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-DNS%E5%8E%86%E5%8F%B2%E8%A7%A3%E6%9E%90%E3%80%82%E7%9B%AE%E6%A0%87%E7%BD%91%E7%AB%99%E5%9C%A8%E5%88%9B%E5%BB%BA%E6%97%B6%E5%8F%AF%E8%83%BD%E6%9C%AA%E4%BD%BF%E7%94%A8CDN%EF%BC%88%E5%BE%AE%E6%AD%A5%E5%9C%A8%E7%BA%BF%EF%BC%89"><span class="toc-text">4.DNS历史解析。目标网站在创建时可能未使用CDN（微步在线）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%9A%97%E9%BB%91%E5%BC%95%E6%93%8E%E6%90%9C%E7%B4%A2%EF%BC%88html%E6%BA%90%E4%BB%A3%E7%A0%81%E6%A0%87%E7%AD%BE%EF%BC%89"><span class="toc-text">5.暗黑引擎搜索（html源代码标签）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%95%8F%E6%84%9F%E6%96%87%E4%BB%B6%E6%9F%A5%E6%89%BE%E3%80%82%E6%95%8F%E6%84%9F%E6%96%87%E4%BB%B6%E5%8F%AF%E8%83%BD%E4%BC%9A%E8%AE%B0%E5%BD%95%E7%9B%AE%E6%A0%87%E7%BD%91%E7%AB%99%E7%9A%84%E7%9C%9F%E5%AE%9Eip%E5%9C%B0%E5%9D%80%E6%88%96%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%EF%BC%8C%E9%80%9A%E8%BF%87%E6%9F%A5%E6%89%BE%E7%9B%AE%E6%A0%87%E7%BD%91%E7%AB%99%E7%9B%B8%E5%85%B3%E7%9A%84%E6%95%8F%E6%84%9F%E6%96%87%E4%BB%B6%EF%BC%88-x3D-x3D-%E6%8E%A2%E9%92%88%E3%80%81phpinfo-php-x3D-x3D-%EF%BC%89%E5%8F%AF%E8%8E%B7%E5%8F%96%E7%9C%9F%E5%AE%9Eip%E5%9C%B0%E5%9D%80"><span class="toc-text">6.敏感文件查找。敏感文件可能会记录目标网站的真实ip地址或绝对路径，通过查找目标网站相关的敏感文件（&#x3D;&#x3D;探针、phpinfo.php&#x3D;&#x3D;）可获取真实ip地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%85%A8%E7%BD%91%E6%89%AB%E6%8F%8F%EF%BC%88-x3D-x3D-%E5%B7%A5%E5%85%B7-x3D-x3D-%EF%BC%89"><span class="toc-text">7.全网扫描（&#x3D;&#x3D;工具&#x3D;&#x3D;）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#app%E4%BF%A1%E6%81%AF"><span class="toc-text">app信息</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#waf%E8%AF%86%E5%88%AB%E5%B7%A5%E5%85%B7"><span class="toc-text">waf识别工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#app%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%BC%8F%E6%B4%9E"><span class="toc-text">app服务端漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="toc-text">1.反编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8A%93%E5%8C%85"><span class="toc-text">2.抓包</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%87%8D%E7%82%B9"><span class="toc-text">信息收集重点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nmap%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">nmap的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%B8%B8%E8%A7%81%E7%AB%AF%E5%8F%A3%E5%8F%B7%E5%8F%8A%E5%85%B6%E5%AF%B9%E5%BA%94%E7%AB%AF%E5%8F%A3%E6%9C%8D%E5%8A%A1"><span class="toc-text">了解常见端口号及其对应端口服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nmap%E7%94%A8%E9%80%94"><span class="toc-text">nmap用途</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-text">常用指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E8%84%9A%E6%9C%AC"><span class="toc-text">常用脚本</span></a></li></ol></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/edandein">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        Copyright © 2022 Edandein
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' +  + '&url=' + http%3A%2F%2Fexample.com%2F2022%2F08%2F01%2F%25E4%25BF%25A1%25E6%2581%25AF%25E6%2594%25B6%25E9%259B%2586%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2022/08/01/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>
