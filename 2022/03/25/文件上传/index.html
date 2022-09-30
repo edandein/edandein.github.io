@@ -159,12 +159,12 @@
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime" title="Update time"></i>
-          2022-04-01 22:25:18
+          2022-03-25 22:25:18
         </span>
         
       </div>
       <div class="markdown-body">
-        <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a><strong>文件上传</strong></h1><h2 id="任意上传"><a href="#任意上传" class="headerlink" title="任意上传"></a>任意上传</h2><p>边缘资产的版本一般都很低，所有普遍存在任意上传</p>
+        <h2 id="任意上传"><a href="#任意上传" class="headerlink" title="任意上传"></a>任意上传</h2><p>边缘资产的版本一般都很低，所有普遍存在任意上传</p>
 <p>目标资产很安全没有子域名、没有边缘资产时，可以从旁站入手</p>
 <p>进入网站后台后，首先从模板、模块等地方下手，最后才考虑编辑器</p>
 <p>白名单无法直接上传解析，只能配合文件包含来使用</p>
@@ -184,7 +184,11 @@
 <p>SetHanler application&#x2F;x-httpd-php</p>
 <p>&lt; FilesMatch &gt; </p>
 </blockquote>
-<p>作为局部变量作用文件成功的前提条件:<br>(httpd.exe)开启:<br>1.Allow Override All<br>2.LoadModule rewrite_module modules&#x2F;mod_rewrite.so</p>
+<p>作为局部变量作用文件成功的前提条件:<br>(httpd.exe)开启:</p>
+<ul>
+<li>Allow Override All</li>
+<li>LoadModule rewrite_module modules&#x2F;mod_rewrite.so</li>
+</ul>
 <h2 id="白名单"><a href="#白名单" class="headerlink" title="白名单"></a>白名单</h2><p>主要利用PHP文件包含以及伪协议</p>
 <h3 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h3><p><strong>四个函数包含函数</strong>，include、include_once、require、require_once</p>
 <p><strong>两个文件读取函数</strong>，fopen、file_get_contents</p>
@@ -201,7 +205,10 @@
 <blockquote>
 <p>index.php?file&#x3D;<a target="_blank" rel="noopener" href="https://baidu.com/index.php">https://baidu.com/index.php</a></p>
 </blockquote>
-<h3 id="伪协议"><a href="#伪协议" class="headerlink" title="伪协议"></a>伪协议</h3><p>**tips:**base64编码后不要有+号，会被url解码为空格</p>
+<h3 id="伪协议"><a href="#伪协议" class="headerlink" title="伪协议"></a>伪协议</h3><p><strong>tips:</strong></p>
+<ul>
+<li>Base64编码后不要有+号，会被url解码为空格</li>
+</ul>
 <h4 id="file-x2F-x2F"><a href="#file-x2F-x2F" class="headerlink" title="file:&#x2F;&#x2F;"></a>file:&#x2F;&#x2F;</h4><p>用于访问本地文件系统，并且不受allow_url_fopen，allow_url_include影响</p>
 <blockquote>
 <p>?file&#x3D;file:&#x2F;&#x2F;文件绝对路径</p>
@@ -251,7 +258,7 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime" title="Update time"></i>
-              2022-04-01 22:25:18
+              2022-03-25 22:25:18
             </span>
             
           </div>
@@ -274,7 +281,7 @@
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-text">文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E4%B8%8A%E4%BC%A0"><span class="toc-text">任意上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%A3%80%E6%B5%8B%E7%9A%84%E7%BB%95%E8%BF%87%E4%B8%8A%E4%BC%A0"><span class="toc-text">轻量级检测的绕过上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%BB%91%E5%90%8D%E5%8D%95%E4%B8%8A%E4%BC%A0"><span class="toc-text">黑名单上传</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E7%89%B9%E6%AE%8A%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-text">构造特殊文件名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">分布式配置文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BD%E5%90%8D%E5%8D%95"><span class="toc-text">白名单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%8C%85%E5%90%AB%E3%80%81%E8%BF%9C%E7%A8%8B%E5%8C%85%E5%90%AB"><span class="toc-text">本地包含、远程包含</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">伪协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#file-x2F-x2F"><span class="toc-text">file:&#x2F;&#x2F;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#php-x2F-x2F-input"><span class="toc-text">php:&#x2F;&#x2F;input</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#php-x2F-x2F-filter"><span class="toc-text">php:&#x2F;&#x2F;filter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#data-text-x2F-plain"><span class="toc-text">data:text&#x2F;plain</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#zip-x2F-x2F"><span class="toc-text">zip:&#x2F;&#x2F;</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#00%E6%88%AA%E6%96%AD"><span class="toc-text">00截断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89"><span class="toc-text">条件竞争</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="toc-text">解析漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IIS6-0%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="toc-text">IIS6.0解析漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E8%A7%A3%E6%9E%90"><span class="toc-text">目录解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="toc-text">文件名解析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IIS7-0-x2F-7-5%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E%E3%80%81Nginx-lt-8-03"><span class="toc-text">IIS7.0&#x2F;7.5解析漏洞、Nginx&lt;8.03</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="toc-text">Apache解析漏洞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IIS-PUT"><span class="toc-text">IIS PUT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8CMS%E5%8A%9F%E8%83%BD%E4%B8%8A%E4%BC%A0"><span class="toc-text">利用CMS功能上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AA%E6%8E%88%E6%9D%83%E4%B8%8A%E4%BC%A0"><span class="toc-text">未授权上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95waf%E4%B8%8A%E4%BC%A0"><span class="toc-text">绕waf上传</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E4%B8%8A%E4%BC%A0"><span class="toc-text">任意上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%A3%80%E6%B5%8B%E7%9A%84%E7%BB%95%E8%BF%87%E4%B8%8A%E4%BC%A0"><span class="toc-text">轻量级检测的绕过上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%BB%91%E5%90%8D%E5%8D%95%E4%B8%8A%E4%BC%A0"><span class="toc-text">黑名单上传</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E7%89%B9%E6%AE%8A%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-text">构造特殊文件名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">分布式配置文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BD%E5%90%8D%E5%8D%95"><span class="toc-text">白名单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%8C%85%E5%90%AB%E3%80%81%E8%BF%9C%E7%A8%8B%E5%8C%85%E5%90%AB"><span class="toc-text">本地包含、远程包含</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">伪协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#file-x2F-x2F"><span class="toc-text">file:&#x2F;&#x2F;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#php-x2F-x2F-input"><span class="toc-text">php:&#x2F;&#x2F;input</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#php-x2F-x2F-filter"><span class="toc-text">php:&#x2F;&#x2F;filter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#data-text-x2F-plain"><span class="toc-text">data:text&#x2F;plain</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#zip-x2F-x2F"><span class="toc-text">zip:&#x2F;&#x2F;</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#00%E6%88%AA%E6%96%AD"><span class="toc-text">00截断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89"><span class="toc-text">条件竞争</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="toc-text">解析漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IIS6-0%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="toc-text">IIS6.0解析漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E8%A7%A3%E6%9E%90"><span class="toc-text">目录解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="toc-text">文件名解析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IIS7-0-x2F-7-5%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E%E3%80%81Nginx-lt-8-03"><span class="toc-text">IIS7.0&#x2F;7.5解析漏洞、Nginx&lt;8.03</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="toc-text">Apache解析漏洞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IIS-PUT"><span class="toc-text">IIS PUT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8CMS%E5%8A%9F%E8%83%BD%E4%B8%8A%E4%BC%A0"><span class="toc-text">利用CMS功能上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AA%E6%8E%88%E6%9D%83%E4%B8%8A%E4%BC%A0"><span class="toc-text">未授权上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95waf%E4%B8%8A%E4%BC%A0"><span class="toc-text">绕waf上传</span></a></li></ol>
       
     </div>
   </div>
@@ -552,12 +559,12 @@
       </a>
       <div class="share-content hidden">
         
-          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0 + '&url=' + http%3A%2F%2Fexample.com%2F2022%2F04%2F01%2F%25E6%2596%2587%25E4%25BB%25B6%25E4%25B8%258A%25E4%25BC%25A0%2F + '" target="_blank" title="Twitter">
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0 + '&url=' + http%3A%2F%2Fexample.com%2F2022%2F03%2F25%2F%25E6%2596%2587%25E4%25BB%25B6%25E4%25B8%258A%25E4%25BC%25A0%2F + '" target="_blank" title="Twitter">
             <i class="iconfont icon-twitter"></i>
           </a>
         
         
-          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2022/04/01/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" target="_blank" title="Facebook">
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2022/03/25/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" target="_blank" title="Facebook">
             <i class="iconfont icon-facebooksquare"></i>
           </a>
         
