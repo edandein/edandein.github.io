@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="ed" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      文件上传 
+      
+      
+      |
+    
+     EdandEin&#39;s World
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/color-scheme.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+<link rel="stylesheet" href="/css/comments.css">
+
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Ed</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          <a href="/friends/">Friends</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">文件上传</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2022-04-01 22:25:18
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a><strong>文件上传</strong></h1><h2 id="任意上传"><a href="#任意上传" class="headerlink" title="任意上传"></a>任意上传</h2><p>边缘资产的版本一般都很低，所有普遍存在任意上传</p>
+<p>目标资产很安全没有子域名、没有边缘资产时，可以从旁站入手</p>
+<p>进入网站后台后，首先从模板、模块等地方下手，最后才考虑编辑器</p>
+<p>白名单无法直接上传解析，只能配合文件包含来使用</p>
+<p>木马要与网站编写的脚本语言相同，aspx编写的可以支持asp的马，但是aspx的权限大一点</p>
+<p>getshell后，若对方数据库为mssql、mysql、oracle,还可以直接对数据库文件进行操作</p>
+<p>抓包找不到上传文件地址可以检查元素看有没有；一般会回显图片，这时可以右键查看链接获取地址</p>
+<h2 id="轻量级检测的绕过上传"><a href="#轻量级检测的绕过上传" class="headerlink" title="轻量级检测的绕过上传"></a>轻量级检测的绕过上传</h2><p>绕过JavaScript对文件后缀的检测（抓包修改文件后缀）</p>
+<p>绕过后端对请求包MIME类型的检测（抓包修改Content-Type字段内容）</p>
+<p>绕过文件幻数头的检测（gif-&gt;GIF89A；jpg-&gt;JFIF；png-&gt;%PNG）</p>
+<h2 id="黑名单上传"><a href="#黑名单上传" class="headerlink" title="黑名单上传"></a>黑名单上传</h2><h3 id="构造特殊文件名"><a href="#构造特殊文件名" class="headerlink" title="构造特殊文件名"></a>构造特殊文件名</h3><blockquote>
+<p>基于windows系统特性：. . .（点空格点）	 ::$DATA （在windows里会识别成空格）	大小写绕过</p>
+<p>基于代码层面：双写绕过，特殊文件名php（.php5|.php4|.php3|.php2|.php1|.html|.htm|.phtml|.pht|.pHp|.pHp5|.pHp4|.pHp3|.pHp2|.pHp1|） asp（.asa|.cer|.cdx）</p>
+</blockquote>
+<h3 id="分布式配置文件"><a href="#分布式配置文件" class="headerlink" title="分布式配置文件"></a>分布式配置文件</h3><p>.htaccess（分布式配置文件），用来管理目录的。会把相应开头的文件当作相应后缀来解析（针对apache,php）内容如下：</p>
+<blockquote>
+<p>&lt;FilesMatch “xx”&gt; </p>
+<p>SetHanler application&#x2F;x-httpd-php</p>
+<p>&lt; FilesMatch &gt; </p>
+</blockquote>
+<p>作为局部变量作用文件成功的前提条件:<br>(httpd.exe)开启:<br>1.Allow Override All<br>2.LoadModule rewrite_module modules&#x2F;mod_rewrite.so</p>
+<h2 id="白名单"><a href="#白名单" class="headerlink" title="白名单"></a>白名单</h2><p>主要利用PHP文件包含以及伪协议</p>
+<h3 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h3><p><strong>四个函数包含函数</strong>，include、include_once、require、require_once</p>
+<p><strong>两个文件读取函数</strong>，fopen、file_get_contents</p>
+<p>include()当使用该函数包含文件时，只有代码执行到include()函数时才将文件包含进来，发生错误时只给出一个警告，继续向下执行<br>include_once()功能和include()相同，区别在于当重复调用同一文件时，程序只调用一次<br>require()只要程序一执行就会立即调用文件,发生错误的时候会输出错误信息，并且终止脚本的运行<br>require_once()它的功能与require()相同，区别在于当重复调用同一文件时，程序只调用一次</p>
+<p>fopen与file_get_contents都只能读取文件，并不能执行</p>
+<p><strong>tips:</strong></p>
+<ul>
+<li>利用文件包含还可以读取网站源码及配置文件和其他东西</li>
+<li>包含日志文件GetShell</li>
+<li>包含session文件GetShell</li>
+</ul>
+<h4 id="本地包含、远程包含"><a href="#本地包含、远程包含" class="headerlink" title="本地包含、远程包含"></a>本地包含、远程包含</h4><p>当被包含的文件在服务器本地时，就形成的本地文件包含漏洞。本地包含对目标环境配置没有任何要求</p>
+<p>远程包含形成原因与本地包含形成原因一致，当目标php.ini 配置中 allow_url_fopen&#x3D;on，allow_url_include&#x3D;on 时，包含的文件就可以是其他服务器上的文件</p>
+<blockquote>
+<p>index.php?file&#x3D;<a target="_blank" rel="noopener" href="https://baidu.com/index.php">https://baidu.com/index.php</a></p>
+</blockquote>
+<h3 id="伪协议"><a href="#伪协议" class="headerlink" title="伪协议"></a>伪协议</h3><p>**tips:**base64编码后不要有+号，会被url解码为空格</p>
+<h4 id="file-x2F-x2F"><a href="#file-x2F-x2F" class="headerlink" title="file:&#x2F;&#x2F;"></a>file:&#x2F;&#x2F;</h4><p>用于访问本地文件系统，并且不受allow_url_fopen，allow_url_include影响</p>
+<blockquote>
+<p>?file&#x3D;file:&#x2F;&#x2F;文件绝对路径</p>
+</blockquote>
+<h4 id="php-x2F-x2F-input"><a href="#php-x2F-x2F-input" class="headerlink" title="php:&#x2F;&#x2F;input"></a>php:&#x2F;&#x2F;input</h4><p>需要allow_url_include&#x3D;on，可以写文件，理论上可以执行任何php代码，写入内容需要用post方式提交</p>
+<h4 id="php-x2F-x2F-filter"><a href="#php-x2F-x2F-filter" class="headerlink" title="php:&#x2F;&#x2F;filter"></a>php:&#x2F;&#x2F;filter</h4><p>只是读取，将文件中的数据进行base64加密之后再输出。所以只需要allow_url_fopen&#x3D;on</p>
+<blockquote>
+<p>index.php?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;head.php</p>
+</blockquote>
+<h4 id="data-text-x2F-plain"><a href="#data-text-x2F-plain" class="headerlink" title="data:text&#x2F;plain"></a>data:text&#x2F;plain</h4><p>需要allow_url_fopen&#x3D;on，allow_url_include&#x3D;on </p>
+<blockquote>
+<p>?file&#x3D;data:text&#x2F;plain,&lt;?php phpinfo();?&gt;</p>
+<p>?file&#x3D;data:text&#x2F;plain;base64,PD9waHAgIHBocGluZm8oKTsgPz4&#x3D;</p>
+</blockquote>
+<h4 id="zip-x2F-x2F"><a href="#zip-x2F-x2F" class="headerlink" title="zip:&#x2F;&#x2F;"></a>zip:&#x2F;&#x2F;</h4><p>该协议需要将#编译为%23，所以需要PHP 的版本&gt; &#x3D;5.3.0，要是因为版本的问题无法将#编码成%23，可以手动把#改成%23</p>
+<blockquote>
+<p>file&#x3D;zip:&#x2F;&#x2F;文件路径(绝对路径相对路径都可以)压缩文件名%23压缩文件内的文件名</p>
+</blockquote>
+<h2 id="00截断"><a href="#00截断" class="headerlink" title="00截断"></a>00截断</h2><p>%00截断，php版本应小于5.3.4(机器码00为停止)</p>
+<p>GET传参时，直接在url添加%00即可；若为POST传参，则需要抓包通过十六进制在相应位置填充00</p>
+<h2 id="条件竞争"><a href="#条件竞争" class="headerlink" title="条件竞争"></a>条件竞争</h2><p>形成原因，服务端对上传的文件先保存再校验是否合法。只要我们访问的速度比删除的速度快就可以成功的访问到该文件</p>
+<h2 id="解析漏洞"><a href="#解析漏洞" class="headerlink" title="解析漏洞"></a>解析漏洞</h2><h3 id="IIS6-0解析漏洞"><a href="#IIS6-0解析漏洞" class="headerlink" title="IIS6.0解析漏洞"></a>IIS6.0解析漏洞</h3><h4 id="目录解析"><a href="#目录解析" class="headerlink" title="目录解析"></a>目录解析</h4><p>若目录为为”xxx.asp”，那么该目录下的所有文件都将被作为asp文件解析</p>
+<p>上传时抓包改文件上传的目录，改为能解析的目录名</p>
+<h4 id="文件名解析"><a href="#文件名解析" class="headerlink" title="文件名解析"></a>文件名解析</h4><p>.asp;.jpg像这种畸形文件名在“；”后面的直接被忽略，也就是说当成.asp文件执行</p>
+<h3 id="IIS7-0-x2F-7-5解析漏洞、Nginx-lt-8-03"><a href="#IIS7-0-x2F-7-5解析漏洞、Nginx-lt-8-03" class="headerlink" title="IIS7.0&#x2F;7.5解析漏洞、Nginx&lt;8.03"></a>IIS7.0&#x2F;7.5解析漏洞、Nginx&lt;8.03</h3><p>正常上传文件，访问时在后面加上 &#x2F;.php，该文件会当成PHP来解析。需要php配置文件选项<strong>cgi.fix_pathinfo&#x3D;1</strong>开启。（在严格意义上，这个属于PHP的CGI漏洞）</p>
+<h3 id="Apache解析漏洞"><a href="#Apache解析漏洞" class="headerlink" title="Apache解析漏洞"></a>Apache解析漏洞</h3><p>Apache遇到未知文件拓展名时，会继续左移识别。</p>
+<h2 id="IIS-PUT"><a href="#IIS-PUT" class="headerlink" title="IIS PUT"></a>IIS PUT</h2><p>IIS建设中的网站也可以利用，这些服务器可能并非为搭建网站作用（网站要有写入权限以及允许webDAV服务拓展）</p>
+<p>请求方法put：将数据发送到服务器以创建或更新资源，存在则更改，不存在则创建</p>
+<p>使用工具桂林老兵上传文本格式的木马，通过move方式修改文件后缀名来解析</p>
+<h2 id="利用CMS功能上传"><a href="#利用CMS功能上传" class="headerlink" title="利用CMS功能上传"></a>利用CMS功能上传</h2><p>有些cms会有单独的编辑器后台，个别在编辑处查看源码可以显示后台地址，ewebeditor编辑器，账号密码默认为admin admin，若修改后，可到目录&#x2F;db&#x2F;直接下载数据库查看</p>
+<p>通过后台可写入处写入木马，再用cms的木马扫描，再替换内容</p>
+<h2 id="未授权上传"><a href="#未授权上传" class="headerlink" title="未授权上传"></a>未授权上传</h2><p>在本地构建一个html的包，可以直接上传文件（多见于bc）</p>
+<h2 id="绕waf上传"><a href="#绕waf上传" class="headerlink" title="绕waf上传"></a>绕waf上传</h2><p>Content—Disposition后添加垃圾字符（或其他地方），删除filename最后的引号，内容换行，双写filename&#x3D;</p>
+<p>若上传成功，但无法链接木马，可以用base64加密内容，并在蚁剑上创建编辑器并更换agent头连接</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2022/03/24/SQL%E6%B3%A8%E5%85%A5/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2022-04-01 22:25:18
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2022/05/06/%E6%89%93%E7%8B%97%E6%A3%8D%E6%B3%95/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-text">文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E4%B8%8A%E4%BC%A0"><span class="toc-text">任意上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%BB%E9%87%8F%E7%BA%A7%E6%A3%80%E6%B5%8B%E7%9A%84%E7%BB%95%E8%BF%87%E4%B8%8A%E4%BC%A0"><span class="toc-text">轻量级检测的绕过上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%BB%91%E5%90%8D%E5%8D%95%E4%B8%8A%E4%BC%A0"><span class="toc-text">黑名单上传</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E7%89%B9%E6%AE%8A%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-text">构造特殊文件名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">分布式配置文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BD%E5%90%8D%E5%8D%95"><span class="toc-text">白名单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%8C%85%E5%90%AB%E3%80%81%E8%BF%9C%E7%A8%8B%E5%8C%85%E5%90%AB"><span class="toc-text">本地包含、远程包含</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">伪协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#file-x2F-x2F"><span class="toc-text">file:&#x2F;&#x2F;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#php-x2F-x2F-input"><span class="toc-text">php:&#x2F;&#x2F;input</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#php-x2F-x2F-filter"><span class="toc-text">php:&#x2F;&#x2F;filter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#data-text-x2F-plain"><span class="toc-text">data:text&#x2F;plain</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#zip-x2F-x2F"><span class="toc-text">zip:&#x2F;&#x2F;</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#00%E6%88%AA%E6%96%AD"><span class="toc-text">00截断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89"><span class="toc-text">条件竞争</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="toc-text">解析漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IIS6-0%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="toc-text">IIS6.0解析漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E8%A7%A3%E6%9E%90"><span class="toc-text">目录解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="toc-text">文件名解析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IIS7-0-x2F-7-5%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E%E3%80%81Nginx-lt-8-03"><span class="toc-text">IIS7.0&#x2F;7.5解析漏洞、Nginx&lt;8.03</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="toc-text">Apache解析漏洞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IIS-PUT"><span class="toc-text">IIS PUT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8CMS%E5%8A%9F%E8%83%BD%E4%B8%8A%E4%BC%A0"><span class="toc-text">利用CMS功能上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AA%E6%8E%88%E6%9D%83%E4%B8%8A%E4%BC%A0"><span class="toc-text">未授权上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95waf%E4%B8%8A%E4%BC%A0"><span class="toc-text">绕waf上传</span></a></li></ol></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/edandein">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        Copyright © 2022 Edandein
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0 + '&url=' + http%3A%2F%2Fexample.com%2F2022%2F04%2F01%2F%25E6%2596%2587%25E4%25BB%25B6%25E4%25B8%258A%25E4%25BC%25A0%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2022/04/01/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>
