@@ -183,15 +183,15 @@
           
       </div>
       <div class="markdown-body">
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前段时间沉迷于打靶，但是每次拿到webshell之后思路就断了，也让我发现自己对提权知识点掌握的并不是很牢固，拿不了root、system怎么办 :sob:,练呗！</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前段时间沉迷于打靶，但是每次拿到webshell之后思路就断了，也让我发现自己对提权知识点掌握的并不是很牢固，拿不了root、system怎么办库😢 ,练呗！</p>
 <h1 id="UDF"><a href="#UDF" class="headerlink" title="UDF"></a>UDF</h1><p>UDF（User defined function），即用户自定义函数，是MYSQL的一个扩展接口，用户可以使用该接口来创建函数。</p>
-<h1 id="战斗开始"><a href="#战斗开始" class="headerlink" title="战斗开始"></a>战斗开始</h1><p>通过文件上传拿到webshell后发现是个低权限，cmd命令都执行不了</p>
+<h1 id="利用方法和条件"><a href="#利用方法和条件" class="headerlink" title="利用方法和条件"></a>利用方法和条件</h1><h1 id="战斗开始"><a href="#战斗开始" class="headerlink" title="战斗开始"></a>战斗开始</h1><p>通过文件上传拿到webshell后发现是个低权限，cmd命令都执行不了</p>
 <p><img src="/../images/image-20221012111438103.png" alt="image-20221012111438103"></p>
 <p>顺便翻翻发现了网站的配置文件，获得数据库密码，这也告诉我们信息收集无论在何时何刻都很重要</p>
 <p><img src="/../images/image-20221012111613062.png" alt="image-20221012111613062"></p>
 <p>连接数据库后第一件事还是信息收集，这里我们查看数据库的版本，发现是5.0的</p>
 <p><img src="/../images/image-20221012180105347.png" alt="image-20221012180105347"></p>
-<p>接下来查看当前用户，是个root权限 :+1:</p>
+<p>接下来查看当前用户，是个root权限 👍</p>
 <p><img src="/../images/image-20221012180127633.png" alt="image-20221012180127633"></p>
 <p>再看看有没有对我们导入导出的权限做限制，发现并没有。至此UDF提权的条件完全满足，开始干正事。</p>
 <p><img src="/../images/image-20221012180240045.png" alt="image-20221012180240045"></p>
@@ -207,7 +207,7 @@
 <p><img src="/../images/image-20221012181351806.png" alt="image-20221012181351806"></p>
 <p>已经创建成功了</p>
 <p><img src="/../images/image-20221012181503590.png" alt="image-20221012181503590"></p>
-<p>至高无上的system权限，自此就可以进行愉快的后渗透了:happy:</p>
+<p>至高无上的system权限，自此就可以进行愉快的后渗透了😋</p>
 <p><img src="/../images/image-20221012181535070.png" alt="image-20221012181535070"></p>
 <p><img src="/../images/image-20221012200747527.png" alt="image-20221012200747527"></p>
 <p><img src="/../images/image-20221012200812304.png" alt="image-20221012200812304"></p>
@@ -271,7 +271,7 @@
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UDF"><span class="toc-text">UDF</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%98%E6%96%97%E5%BC%80%E5%A7%8B"><span class="toc-text">战斗开始</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UDF"><span class="toc-text">UDF</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95%E5%92%8C%E6%9D%A1%E4%BB%B6"><span class="toc-text">利用方法和条件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%98%E6%96%97%E5%BC%80%E5%A7%8B"><span class="toc-text">战斗开始</span></a></li></ol>
       
     </div>
   </div>
