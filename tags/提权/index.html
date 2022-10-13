@@ -11,8 +11,8 @@
   
   <title>
     
-      UDF提权 
-      
+      Tag 
+       : 提权
       
       |
     
@@ -106,196 +106,30 @@
 
 
       <div class="flex-container">
-        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
-<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+        <!-- 标签详情页，展示某个标签下的文章列表，url形式：https://yoursite/tags/某个标签/ -->
 
-
-  <!-- LaTex Display -->
-
+<div class="container tag-details">
+  <div class="content-title">
+    <h2>
+      <span>提权</span>
+    </h2>
+  </div>
   
-    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
-  
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
-      }
-    }
-  </script>
-
-
-
-
-
-  <!-- clipboard -->
-
-  
-    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
-  
-  
-<script src="/js/codeCopy.js"></script>
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
-  <div class="container post-details" id="post-details">
-    <div class="post-content">
-      <div class="post-title">UDF提权</div>
-      <div class="post-attach">
-        <span class="post-pubtime">
-          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2022-10-12 10:28:18
-        </span>
-        
-              <span class="post-tags">
-                <i class="iconfont icon-tags mr-10" title="Tags"></i>
-                
-                <span class="span--tag mr-8">
-                  <a href="/tags/%E6%8F%90%E6%9D%83/" title="提权">
-                    #提权
-                  </a>
-                </span>
-                
-                <span class="span--tag mr-8">
-                  <a href="/tags/MYSQL/" title="MYSQL">
-                    #MYSQL
-                  </a>
-                </span>
-                
-                <span class="span--tag mr-8">
-                  <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" title="数据库">
-                    #数据库
-                  </a>
-                </span>
-                
-              </span>
-          
+    <div class="post-list">
+      <div class="post-item" title="UDF提权">
+        <span class="time-m-d">2022-10-12</span>
+        <a href="/2022/10/12/udf%E6%8F%90%E6%9D%83/">
+          <span>UDF提权</span>
+        </a>
       </div>
-      <div class="markdown-body">
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前段时间沉迷于打靶，但是每次拿到webshell之后思路就断了，也让我发现自己对提权知识点掌握的并不是很牢固，拿不了root、system怎么办 :sob:,练呗！</p>
-<h1 id="UDF"><a href="#UDF" class="headerlink" title="UDF"></a>UDF</h1><p>UDF（User defined function），即用户自定义函数，是MYSQL的一个扩展接口，用户可以使用该接口来创建函数。</p>
-<h1 id="战斗开始"><a href="#战斗开始" class="headerlink" title="战斗开始"></a>战斗开始</h1><p>通过文件上传拿到webshell后发现是个低权限，cmd命令都执行不了</p>
-<p><img src="/../images/image-20221012111438103.png" alt="image-20221012111438103"></p>
-<p>顺便翻翻发现了网站的配置文件，获得数据库密码，这也告诉我们信息收集无论在何时何刻都很重要</p>
-<p><img src="/../images/image-20221012111613062.png" alt="image-20221012111613062"></p>
-<p>连接数据库后第一件事还是信息收集，这里我们查看数据库的版本，发现是5.0的</p>
-<p><img src="/../images/image-20221012180105347.png" alt="image-20221012180105347"></p>
-<p>接下来查看当前用户，是个root权限 :+1:</p>
-<p><img src="/../images/image-20221012180127633.png" alt="image-20221012180127633"></p>
-<p>再看看有没有对我们导入导出的权限做限制，发现并没有。至此UDF提权的条件完全满足，开始干正事。</p>
-<p><img src="/../images/image-20221012180240045.png" alt="image-20221012180240045"></p>
-<p>把我们的dll文件随便上传到一个能上传的路径，这里我上传到了C:&#x2F;Inetpub&#x2F;cms&#x2F;目录下</p>
-<p><img src="/../images/image-20221012180738448.png" alt="image-20221012180738448"></p>
-<p>再次进入数据库，创建一张表，表名随意，字段随意，数据类型要为longblob（二进制大对象，是一个可以存储二进制文件的容器）</p>
-<p><img src="/../images/image-20221012180434905.png" alt="image-20221012180434905"></p>
-<p>通过load_file读取我们上传的dll文件，把内容插入表中</p>
-<p><img src="/../images/image-20221012180936689.png" alt="image-20221012180936689"></p>
-<p>这里查询表内的内容，通过dumpfile以二进制的形式导出，因为靶场环境mysql版本小于5.1，所以要导出到c:&#x2F;windows&#x2F;system32&#x2F;目录下</p>
-<p><img src="/../images/image-20221012181236595.png" alt="image-20221012181236595"></p>
-<p>通过刚刚从表内导出的dll文件创建函数</p>
-<p><img src="/../images/image-20221012181351806.png" alt="image-20221012181351806"></p>
-<p>已经创建成功了</p>
-<p><img src="/../images/image-20221012181503590.png" alt="image-20221012181503590"></p>
-<p>至高无上的system权限，自此就可以进行愉快的后渗透了:happy:</p>
-<p><img src="/../images/image-20221012181535070.png" alt="image-20221012181535070"></p>
-<p><img src="/../images/image-20221012200747527.png" alt="image-20221012200747527"></p>
-<p><img src="/../images/image-20221012200812304.png" alt="image-20221012200812304"></p>
-<p><img src="/../images/image-20221012200906543.png" alt="image-20221012200906543"></p>
-<p><img src="/../images/image-20221012200927278.png" alt="image-20221012200927278"></p>
-<p>删除函数</p>
-<p><img src="/../images/image-20221012201845133.png" alt="image-20221012201845133"></p>
-
-      </div>
-      
-        <div class="prev-or-next">
-          <div class="post-foot-next">
-            
-              <a href="/2022/07/04/%E4%BB%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0sql%E6%B3%A8%E5%85%A5/" target="_self">
-                <i class="iconfont icon-chevronleft"></i>
-                <span>Prev</span>
-              </a>
-            
-          </div>
-          <div class="post-attach">
-            <span class="post-pubtime">
-              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2022-10-12 10:28:18
-            </span>
-            
-                  <span class="post-tags">
-                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
-                    
-                    <span class="span--tag mr-8">
-                      <a href="/tags/%E6%8F%90%E6%9D%83/" title="提权">
-                        #提权
-                      </a>
-                    </span>
-                    
-                    <span class="span--tag mr-8">
-                      <a href="/tags/MYSQL/" title="MYSQL">
-                        #MYSQL
-                      </a>
-                    </span>
-                    
-                    <span class="span--tag mr-8">
-                      <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" title="数据库">
-                        #数据库
-                      </a>
-                    </span>
-                    
-                  </span>
-              
-          </div>
-          <div class="post-foot-prev">
-            
-          </div>
-        </div>
-      
     </div>
-    
-  <div id="btn-catalog" class="btn-catalog">
-    <i class="iconfont icon-catalog"></i>
-  </div>
-  <div class="post-catalog hidden" id="catalog">
-    <div class="title">Contents</div>
-    <div class="catalog-content">
-      
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UDF"><span class="toc-text">UDF</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%98%E6%96%97%E5%BC%80%E5%A7%8B"><span class="toc-text">战斗开始</span></a></li></ol>
-      
-    </div>
-  </div>
-
   
-<script src="/js/catalog.js"></script>
-
-
-
-
+  <nav class="post-navigation">
     
-      <div class="comments-container">
-        
-
-
-
-
-
-
-
-      </div>
+    <span class="page-num">1 / 1</span>
     
-  </div>
-
+  </nav>
+</div>
 
         
 <div class="footer">
@@ -543,24 +377,6 @@
 
 
         
-  
-    <div class="share-icon tools-bar-item">
-      <a href="javascript: void(0)" id="share-icon">
-        <i class="iconfont iconshare"></i>
-      </a>
-      <div class="share-content hidden">
-        
-          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + UDF%E6%8F%90%E6%9D%83 + '&url=' + http%3A%2F%2Fexample.com%2F2022%2F10%2F12%2Fudf%25E6%258F%2590%25E6%259D%2583%2F + '" target="_blank" title="Twitter">
-            <i class="iconfont icon-twitter"></i>
-          </a>
-        
-        
-          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2022/10/12/udf%E6%8F%90%E6%9D%83/" target="_blank" title="Facebook">
-            <i class="iconfont icon-facebooksquare"></i>
-          </a>
-        
-      </div>
-    </div>
   
   
 <script src="/js/shares.js"></script>
